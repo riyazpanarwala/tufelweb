@@ -79,19 +79,19 @@ function App() {
                 <div className="d-md-flex">
                   <div className="col-md-6">
                     <div className="services-2 w-100 d-flex cursor" onClick={() => { loadServices(1)}}>
-                      <div className="icon d-flex align-items-center justify-content-center"><span className="flaticon-wealth" /></div>
+                      <div className="icon d-flex align-items-center justify-content-center"><div className="serviceImage" style={{ backgroundImage: `url('img/accounting.png')` }} /></div>
                       <div className="text pl-4">
                         <h4>Book keeping / Accounting</h4>
                       </div>
                     </div>
                     <div className="services-2 w-100 d-flex cursor" onClick={() => { loadServices(2)}}>
-                      <div className="icon d-flex align-items-center justify-content-center"><span className="flaticon-accountant" /></div>
+                      <div className="icon d-flex align-items-center justify-content-center"><div className="serviceImage" style={{ backgroundImage: `url('img/gst.png')` }} /></div>
                       <div className="text pl-4">
                         <h4>GST Compliances</h4>
                       </div>
                     </div>
                     <div className="services-2 w-100 d-flex cursor" onClick={() => { loadServices(3)}}>
-                      <div className="icon d-flex align-items-center justify-content-center"><span className="flaticon-teamwork" /></div>
+                      <div className="icon d-flex align-items-center justify-content-center"><div className="serviceImage" style={{ backgroundImage: `url('img/incometax.png')` }} /></div>
                       <div className="text pl-4">
                         <h4>Income Tax Return</h4>
                       </div>
@@ -99,19 +99,19 @@ function App() {
                   </div>
                   <div className="col-md-6">
                     <div className="services-2 w-100 d-flex cursor" onClick={() => { loadServices(4)}}>
-                      <div className="icon d-flex align-items-center justify-content-center"><span className="flaticon-accounting" /></div>
+                      <div className="icon d-flex align-items-center justify-content-center"><div className="serviceImage" style={{ backgroundImage: `url('img/roc.png')` }} /></div>
                       <div className="text pl-4">
                         <h4>ROC / MCA Compliances</h4>
                       </div>
                     </div>
                     <div className="services-2 w-100 d-flex cursor" onClick={() => { loadServices(5)}}>
-                      <div className="icon d-flex align-items-center justify-content-center"><span className="flaticon-wealth" /></div>
+                      <div className="icon d-flex align-items-center justify-content-center"><div className="serviceImage" style={{ backgroundImage: `url('img/agreement.png')` }} /></div>
                       <div className="text pl-4">
                         <h4>Agreement Drafting</h4>
                       </div>
                     </div>
                     <div className="services-2 w-100 d-flex cursor" onClick={() => { loadServices(6)}}>
-                      <div className="icon d-flex align-items-center justify-content-center"><span className="flaticon-wealth" /></div>
+                      <div className="icon d-flex align-items-center justify-content-center"><div className="serviceImage" style={{ backgroundImage: `url('img/other.png')` }} /></div>
                       <div className="text pl-4">
                         <h4>Other services</h4>
                       </div>
