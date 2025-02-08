@@ -164,7 +164,7 @@ function App() {
                     <div className="col-md-4 mb-md-0 mb-4">
                       <h2 className="footer-heading">About us</h2>
                       <p>Panarwala & Associates</p>
-                      <p>A422, Sun westbank, Nr. Shiv cinema, Ashram road, Ahmedabad, 380009</p>
+                      <p>1012, Shilp Epitome, Sindhu Bhavan Road, Bodakdev, Ahmedabad, 380054</p>
                       <ul className="ftco-footer-social p-0">
                         <li><a href="https://www.facebook.com/profile.php?id=61555952280720" data-toggle="tooltip" data-placement="top" title="Facebook"><span className="fa fa-facebook" /></a></li>
                         <li><a href="https://www.instagram.com/panarwala_associates/" data-toggle="tooltip" data-placement="top" title="Instagram"><span className="fa fa-instagram" /></a></li>
