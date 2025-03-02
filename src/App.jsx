@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Analytics } from "@vercel/analytics/react"
 import Accounting from "./accounting.jsx"
 import Gst from "./gst.jsx"
 import Incometax from "./incometax.jsx"
@@ -194,7 +195,7 @@ function App() {
                   <div className="row">
                     <div className="col-md-12">
                       <p className="copyright">{/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                        Copyright ©2024 All rights reserved
+                        Copyright ©2025 All rights reserved
                         </p>
                     </div>
                   </div>
@@ -202,6 +203,7 @@ function App() {
               </div>
             </div>
           </footer>
+          <Analytics />
     </>
   );
 }
