@@ -1,0 +1,94 @@
+/* ─────────────────────────────────────────────────────────
+   PANARWALA & ASSOCIATES — Global Styles
+   No Bootstrap. Pure CSS. Cormorant Garamond + Outfit.
+   ───────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Palette */
+  --ink:          #0A0F1E;
+  --ink-soft:     #141B2D;
+  --ink-muted:    #1E2A40;
+  --gold:         #C8A96E;
+  --gold-bright:  #E4C47A;
+  --gold-dim:     rgba(200,169,110,0.18);
+  --gold-line:    rgba(200,169,110,0.35);
+  --parchment:    #F9F6EF;
+  --parchment-2:  #F2EDE2;
+  --white:        #FFFFFF;
+  --slate:        #64748B;
+  --slate-light:  #94A3B8;
+
+  /* Fonts */
+  --ff-display: 'Cormorant Garamond', Georgia, serif;
+  --ff-body:    'Outfit', system-ui, sans-serif;
+
+  /* Easing */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   0.22s;
+  --dur-mid:    0.38s;
+  --dur-slow:   0.65s;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--ff-body);
+  background: var(--parchment);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+ul, ol { list-style: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--parchment-2); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* Selection */
+::selection { background: var(--gold); color: var(--ink); }
+
+/* ── Keyframes used globally ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(200,169,110,0); }
+}
