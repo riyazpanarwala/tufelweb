@@ -1,0 +1,91 @@
+/* TopBar Container */
+.topbar {
+  background: #070C18;
+  border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+  padding: 9px 0;
+}
+
+.topbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Left Section */
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+/* Contact Item */
+.topbar-contact {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.58);
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  transition: color 0.25s ease;
+  cursor: default;
+}
+
+.topbar-contact:hover {
+  color: #C8A96E;
+}
+
+.topbar-contact__icon {
+  color: #C8A96E;
+  display: flex;
+  align-items: center;
+}
+
+/* Right Section */
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Social Button */
+.topbar-social {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(200, 169, 110, 0.10);
+  border: 1px solid rgba(200, 169, 110, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C8A96E;
+  transition: all 0.25s ease;
+  transform: translateY(0);
+}
+
+.topbar-social:hover {
+  background: #C8A96E;
+  border-color: #C8A96E;
+  color: #070C18;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .topbar__inner {
+    padding: 0 16px;
+    justify-content: center;
+  }
+  
+  .topbar__left {
+    justify-content: center;
+    width: 100%;
+  }
+}
