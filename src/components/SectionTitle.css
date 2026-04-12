@@ -1,0 +1,83 @@
+/* SectionTitle.css */
+
+.section-title {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   0.65s var(--ease-out) var(--delay, 0ms),
+    transform 0.65s var(--ease-out) var(--delay, 0ms);
+}
+
+.section-title.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Eyebrow line + text */
+.section-title__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.section-title__eyebrow-line {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.section-title__eyebrow-text {
+  font-family: var(--ff-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Heading */
+.section-title__heading {
+  font-family: var(--ff-display);
+  font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: #F0EBE0;
+  margin: 0 0 16px;
+  max-width: 680px;
+}
+
+.section-title__heading em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Subtitle */
+.section-title__subtitle {
+  font-family: var(--ff-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.48);
+  margin: 0;
+  max-width: 540px;
+}
+
+/* Centred variant */
+.section-title--center {
+  text-align: center;
+  align-items: center;
+}
+
+.section-title--center .section-title__eyebrow {
+  justify-content: center;
+}
+
+.section-title--center .section-title__heading,
+.section-title--center .section-title__subtitle {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

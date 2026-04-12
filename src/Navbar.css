@@ -1,34 +1,26 @@
-:root {
-  --gold: #C8A96E;
-  --bg-dark: #0D1525;
-  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* Navbar.css */
 
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--bg-dark);
+  background: #0D1525;
   border-bottom: 1px solid rgba(200, 169, 110, 0.22);
-  transition: all 0.35s var(--transition-smooth);
-  animation: slideDown 0.5s var(--transition-smooth) both;
-}
-
-.navbar.scrolled {
-  background: rgba(7, 12, 24, 0.97);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
+  transition: background var(--dur-mid) var(--ease-in-out),
+              box-shadow  var(--dur-mid) var(--ease-in-out);
+  animation: slideDown 0.5s var(--ease-out) both;
 }
 
 @keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.navbar--scrolled {
+  background: rgba(7, 12, 24, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
 }
 
 .navbar-container {
@@ -41,24 +33,7 @@
   justify-content: space-between;
 }
 
-.navbar-logo {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: opacity 0.3s ease;
-}
-
-.navbar-logo:hover {
-  opacity: 0.85;
-}
-
-.navbar-logo img {
-  height: 64px;
-  width: auto;
-  object-fit: contain;
-  filter: brightness(1.05);
-}
-
+/* Home button */
 .nav-home-btn {
   display: flex;
   align-items: center;
@@ -66,16 +41,17 @@
   padding: 10px 20px;
   border-radius: 8px;
   background: transparent;
+  border: none;
   color: rgba(255, 255, 255, 0.78);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--ff-body);
   font-weight: 500;
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: all 0.25s var(--transition-smooth);
   cursor: pointer;
-  border: none;
-  position: relative;
+  transition: background var(--dur-fast) ease,
+              color     var(--dur-fast) ease;
+  outline-offset: 3px;
 }
 
 .nav-home-btn:hover {
@@ -83,19 +59,19 @@
   color: var(--gold);
 }
 
-/* Mobile - keep it simple, just shrink padding */
+.nav-home-btn:focus-visible {
+  outline: 2px solid var(--gold);
+}
+
+/* Responsive */
 @media (max-width: 640px) {
   .navbar-container {
     padding: 0 20px;
     height: 64px;
   }
-  
-  .navbar-logo img {
-    height: 40px;
-  }
-  
+
   .nav-home-btn {
-    padding: 8px 16px;
+    padding: 8px 14px;
     font-size: 12px;
   }
 }

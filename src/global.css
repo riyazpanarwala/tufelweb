@@ -1,45 +1,105 @@
 /* ─────────────────────────────────────────────────────────
-   PANARWALA & ASSOCIATES — Global Styles
-   No Bootstrap. Pure CSS. Cormorant Garamond + Outfit.
+   PANARWALA & ASSOCIATES — Global Styles & Design System
+   Cormorant Garamond (display) + Outfit (body)
+   No Bootstrap. Pure CSS. All tokens centralised here.
    ───────────────────────────────────────────────────────── */
 
-*, *::before, *::after {
+/* ═══════════════════════════════
+   1. CSS DESIGN TOKENS
+═══════════════════════════════ */
+:root {
+  /* ── Colour Palette ── */
+  --ink:           #0A0F1E;
+  --ink-soft:      #141B2D;
+  --ink-muted:     #1E2A40;
+
+  --gold:          #C8A96E;
+  --gold-bright:   #E4C47A;
+  --gold-dim:      rgba(200, 169, 110, 0.18);
+  --gold-line:     rgba(200, 169, 110, 0.35);
+
+  --parchment:     #F9F6EF;
+  --parchment-2:   #F2EDE2;
+  --white:         #FFFFFF;
+  --slate:         #64748B;
+  --slate-light:   #94A3B8;
+
+  /* ── Typography ── */
+  --ff-display:    'Cormorant Garamond', Georgia, serif;
+  --ff-body:       'Outfit', system-ui, sans-serif;
+
+  /* ── Type Scale ── */
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  15px;
+  --text-md:    17px;
+  --text-lg:    20px;
+  --text-xl:    24px;
+  --text-2xl:   32px;
+  --text-3xl:   46px;
+  --text-4xl:   62px;
+
+  /* ── Spacing Scale (4-pt grid) ── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+
+  /* ── Border Radius ── */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* ── Easing ── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Duration ── */
+  --dur-fast:  0.22s;
+  --dur-mid:   0.38s;
+  --dur-slow:  0.65s;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.18);
+  --shadow-md:  0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-lg:  0 20px 60px rgba(0, 0, 0, 0.38);
+  --shadow-gold: 0 8px 20px rgba(200, 169, 110, 0.28);
+
+  /* ── Layout ── */
+  --max-width: 1200px;
+  --gutter:     32px;
+}
+
+/* ═══════════════════════════════
+   2. RESET
+═══════════════════════════════ */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:root {
-  /* Palette */
-  --ink:          #0A0F1E;
-  --ink-soft:     #141B2D;
-  --ink-muted:    #1E2A40;
-  --gold:         #C8A96E;
-  --gold-bright:  #E4C47A;
-  --gold-dim:     rgba(200,169,110,0.18);
-  --gold-line:    rgba(200,169,110,0.35);
-  --parchment:    #F9F6EF;
-  --parchment-2:  #F2EDE2;
-  --white:        #FFFFFF;
-  --slate:        #64748B;
-  --slate-light:  #94A3B8;
-
-  /* Fonts */
-  --ff-display: 'Cormorant Garamond', Georgia, serif;
-  --ff-body:    'Outfit', system-ui, sans-serif;
-
-  /* Easing */
-  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --dur-fast:   0.22s;
-  --dur-mid:    0.38s;
-  --dur-slow:   0.65s;
-}
-
+/* ═══════════════════════════════
+   3. BASE
+═══════════════════════════════ */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -50,50 +110,94 @@ body {
   overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
-button { cursor: pointer; border: none; background: none; font: inherit; }
-ul, ol { list-style: none; }
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--parchment-2); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-/* Selection */
-::selection { background: var(--gold); color: var(--ink); }
-
-/* ── Keyframes used globally ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes lineGrow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-@keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,0.4); }
-  50%       { box-shadow: 0 0 0 10px rgba(200,169,110,0); }
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* App Layout */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ═══════════════════════════════
+   4. SCROLLBAR
+═══════════════════════════════ */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: var(--parchment-2); }
+::-webkit-scrollbar-thumb  { background: var(--gold); border-radius: 2px; }
+
+/* ═══════════════════════════════
+   5. SELECTION
+═══════════════════════════════ */
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════
+   6. FOCUS STYLES (global fallback)
+   Individual components override as needed.
+═══════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ═══════════════════════════════
+   7. ACCESSIBILITY UTILITIES
+═══════════════════════════════ */
+
+/* Skip-to-content link — visible only on focus */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 9999;
+  padding: var(--space-3) var(--space-6);
+  background: var(--gold);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transition: top var(--dur-fast) ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ═══════════════════════════════
+   8. APP LAYOUT
+═══════════════════════════════ */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -104,12 +208,14 @@ ul, ol { list-style: none; }
   flex: 1;
 }
 
-/* Page Transitions */
+/* ═══════════════════════════════
+   9. PAGE TRANSITIONS
+═══════════════════════════════ */
 .page-transition {
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: pageEnter var(--dur-mid) var(--ease-out) both;
 }
 
-@keyframes fadeIn {
+@keyframes pageEnter {
   from {
     opacity: 0;
     transform: translateY(10px);
@@ -120,26 +226,50 @@ ul, ol { list-style: none; }
   }
 }
 
-/* Loading Spinner */
-.loading-spinner-container {
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #070C18, #0A1020);
+/* ═══════════════════════════════
+   10. GLOBAL KEYFRAMES
+   (referenced by multiple components)
+═══════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid rgba(200, 169, 110, 0.15);
-  border-top: 2px solid #C8A96E;
-  animation: spin 0.8s linear infinite;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0);      }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(200, 169, 110, 0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(200, 169, 110, 0);  }
+}
+
+/* ═══════════════════════════════
+   11. RESPONSIVE GUTTER OVERRIDE
+═══════════════════════════════ */
+@media (max-width: 640px) {
+  :root {
+    --gutter: 20px;
   }
 }

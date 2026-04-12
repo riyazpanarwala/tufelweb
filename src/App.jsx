@@ -1,162 +1,54 @@
-import React, { useState, Suspense, lazy } from "react";
+/**
+ * App.jsx — Root application shell
+ *
+ * Navigation is state-based (no router dep added).
+ * All service data comes from services.js (single source).
+ */
+import React, { useState, Suspense, lazy, useCallback } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import "./global.css";
 import TopBar from "./TopBar";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Footer from "./Footer";
+import LoadingSpinner from "./components/LoadingSpinner";
 
-// Lazy load service pages
+import "./global.css";
+
+// Lazy-loaded service detail page
 const ServicePage = lazy(() => import("./ServicePage"));
 
-// ── All service content ──
-const SERVICE_DATA = {
-  1: {
-    title: "Book Keeping / Accounting",
-    img: "img/accounting.png",
-    items: [
-      "Book Keeping (Tally / Customized Software — India / UAE / Saudi Arabia)",
-      "Finalization of Books",
-      "Review of Books of Accounts",
-    ],
-  },
-  2: {
-    title: "GST Compliances",
-    img: "img/gst.png",
-    items: [
-      "GST Registration (Regular / Composition / Casual Tax Payer)",
-      "GST Return",
-      "GST Refund",
-      "GST Appeal",
-      "Departmental Representation",
-      "Demand / Notice Reply",
-      "GSTN Surrender And Final Return",
-      "LUT",
-    ],
-  },
-  3: {
-    title: "Income Tax Return",
-    img: "img/incometax.png",
-    items: [
-      "PAN (Registration / Updation / Modification / Surrender)",
-      "IT Return (Original / Revised / Belated / Updated / Rectification of Returns)",
-      "Tax Computation & Finalization",
-      "Tax Planning & Management",
-      "Advance Tax",
-      "Income Tax Demand / Notice Reply",
-      "Income Tax Appeal",
-      "Departmental Representation",
-    ],
-  },
-  4: {
-    title: "ROC / MCA Compliances",
-    img: "img/roc.png",
-    items: [
-      "Private Limited Registrations",
-      "LLP Registrations",
-      "Name Change of Company",
-      "Increase of Paid Capital",
-      "Increase of Authorised Capital",
-      "Creation / Modification of Charge",
-      "Registration Address Change",
-      "Annual ROC Compliances",
-      "DIN Related Information (KYC / Allotment / Surrender)",
-      "Appointment / Resignation of Directors",
-      "LLP Annual ROC Compliances",
-      "Changing Director Personal Information",
-      "Incorporation of Business (INC20A)",
-    ],
-  },
-  5: {
-    title: "Agreement Drafting",
-    img: "img/agreement.png",
-    items: [
-      "Agreement Drafting",
-      "HUF Registration",
-      "Partnership Firm Registration",
-      "Pedhi Nama",
-      "Purchase Deed / Sale Deed",
-      "Affidavit",
-      "Rent Agreement",
-      "Leave & Licence Agreement",
-      "Firm / LLP / HUF Deed",
-      "Supplementary / Modification / Addendum Deed",
-    ],
-  },
-  6: {
-    title: "Other Services",
-    img: "img/other.png",
-    items: [
-      "TAN Registration / Updation",
-      "TDS Refund",
-      "Udyam Registration / Updation",
-      "Digital Signature Certificate / DSC",
-      "Loan and Financing",
-      "Trademark",
-      "Import Export Registration / Updation",
-      "Insurance Services",
-      "Gumasta / Professional Tax",
-      "PF / ESIC",
-      "Management Consultancy",
-      "Turnover / Networth / Visa Certificate",
-      "15CA / CB",
-    ],
-  },
-};
+function App() {
+  const [activeServiceId, setActiveServiceId] = useState(null);
 
-// Page transition wrapper
-function PageTransition({ children, pageKey }) {
-  return (
-    <div key={pageKey} className="page-transition">
-      {children}
-    </div>
-  );
-}
-
-function LoadingSpinner() {
-  return (
-    <div className="loading-spinner-container">
-      <div className="loading-spinner" />
-    </div>
-  );
-}
-
-export default function App() {
-  const [activeService, setActiveService] = useState(null);
-
-  const handleServiceSelect = (id) => {
-    setActiveService(id);
+  const handleServiceSelect = useCallback((id) => {
+    setActiveServiceId(id);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
-  const handleHome = () => {
-    setActiveService(null);
+  const handleHome = useCallback(() => {
+    setActiveServiceId(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const currentService = activeService ? SERVICE_DATA[activeService] : null;
+  }, []);
 
   return (
     <div className="app-container">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       <TopBar />
       <Navbar onHome={handleHome} />
 
-      <main className="main-content">
-        {activeService === null ? (
-          <PageTransition pageKey="home">
+      <main id="main-content" className="main-content">
+        {activeServiceId === null ? (
+          <div className="page-transition" key="home">
             <Home onServiceSelect={handleServiceSelect} />
-          </PageTransition>
+          </div>
         ) : (
           <Suspense fallback={<LoadingSpinner />}>
-            <PageTransition pageKey="service">
-              <ServicePage
-                serviceId={activeService}
-                title={currentService.title}
-                img={currentService.img}
-                items={currentService.items}
-                onBack={handleHome}
-              />
-            </PageTransition>
+            <div className="page-transition" key={`service-${activeServiceId}`}>
+              <ServicePage serviceId={activeServiceId} onBack={handleHome} />
+            </div>
           </Suspense>
         )}
       </main>
@@ -166,3 +58,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

@@ -1,0 +1,380 @@
+/* ServicePage.css */
+
+/* ── Page Shell ── */
+.sp-page {
+  background: linear-gradient(180deg, #070C18 0%, #0A1020 60%, #0D1428 100%);
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────
+   Hero Banner
+───────────────────────────────── */
+.sp-hero {
+  position: relative;
+  background: linear-gradient(135deg, #0A0F1E 0%, #111928 60%, #0D1525 100%);
+  border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+  padding: 52px 32px 36px;
+  overflow: hidden;
+}
+
+/* Decorative ring */
+.sp-hero__ring {
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 60px solid rgba(200, 169, 110, 0.04);
+  pointer-events: none;
+}
+
+/* Ambient glow blob */
+.sp-hero__glow {
+  position: absolute;
+  right: 60px;
+  top: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 169, 110, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Bottom gold strip */
+.sp-hero__strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold)   30%,
+    var(--gold-bright) 50%,
+    var(--gold)   70%,
+    transparent
+  );
+}
+
+/* Inner content wrapper */
+.sp-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Breadcrumb ── */
+.sp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  animation: fadeIn var(--dur-mid) var(--ease-out) both;
+}
+
+.sp-breadcrumb__home {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ff-body);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 0;
+  transition: color var(--dur-fast) ease;
+  outline-offset: 3px;
+}
+
+.sp-breadcrumb__home:hover       { color: var(--gold); }
+.sp-breadcrumb__home:focus-visible { outline: 2px solid var(--gold); border-radius: 3px; }
+
+.sp-breadcrumb__current {
+  font-family: var(--ff-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+/* ── Title Row ── */
+.sp-hero__title-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   0.55s var(--ease-out) 0.05s,
+    transform 0.55s var(--ease-out) 0.05s;
+}
+
+.sp-hero__title-row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service icon container */
+.sp-hero__icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(200, 169, 110, 0.15),
+    rgba(200, 169, 110, 0.05)
+  );
+  border: 1px solid rgba(200, 169, 110, 0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(200, 169, 110, 0.10);
+  animation: scaleIn 0.5s var(--ease-out) 0.1s both;
+}
+
+.sp-hero__icon-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: brightness(1.1) saturate(0.9);
+}
+
+/* Eyebrow + Heading */
+.sp-hero__eyebrow {
+  font-family: var(--ff-body);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 8px;
+}
+
+.sp-hero__heading {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 600;
+  color: #F0EBE0;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* Gold rule under title */
+.sp-hero__rule {
+  height: 1px;
+  margin-top: 32px;
+  background: linear-gradient(
+    90deg,
+    var(--gold),
+    rgba(200, 169, 110, 0.10) 80%,
+    transparent
+  );
+  transform-origin: left;
+  animation: lineGrow 0.8s var(--ease-out) 0.3s both;
+}
+
+/* ─────────────────────────────────
+   Content Area
+───────────────────────────────── */
+.sp-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+/* ── Card ── */
+.sp-card {
+  background: linear-gradient(145deg, #0F1727 0%, #121D30 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inner ambient glow */
+.sp-card__glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(200, 169, 110, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* "What we offer" label */
+.sp-card__label {
+  font-family: var(--ff-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 110, 0.6);
+  margin: 0 0 24px;
+}
+
+/* ── Service List ── */
+.sp-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+/* ── List Item ── */
+.sp-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateX(-20px);
+  transition:
+    opacity       0.4s ease           calc(var(--i, 0) * 0.05s),
+    transform     0.4s var(--ease-out) calc(var(--i, 0) * 0.05s),
+    background    0.25s ease,
+    border-color  0.25s ease;
+}
+
+.sp-list-item.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sp-list-item:hover {
+  background: rgba(200, 169, 110, 0.06);
+  border-left-color: var(--gold-bright);
+  border-color: rgba(200, 169, 110, 0.30);
+}
+
+/* Dot marker */
+.sp-list-item__dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 7px;
+  transition: box-shadow 0.25s ease;
+}
+
+.sp-list-item:hover .sp-list-item__dot {
+  box-shadow: 0 0 8px rgba(200, 169, 110, 0.6);
+}
+
+/* Text */
+.sp-list-item__text {
+  font-family: var(--ff-body);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 0.25s ease;
+}
+
+.sp-list-item:hover .sp-list-item__text {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* ── Card Footer (Back CTA) ── */
+.sp-card__footer {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Back button */
+.sp-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: rgba(200, 169, 110, 0.10);
+  border: 1px solid rgba(200, 169, 110, 0.30);
+  color: var(--gold);
+  font-family: var(--ff-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color      var(--dur-fast) ease;
+  outline-offset: 3px;
+}
+
+.sp-back-btn:hover {
+  background: var(--gold);
+  color: #070C18;
+}
+
+.sp-back-btn:focus-visible {
+  outline: 2px solid var(--gold);
+}
+
+/* ── Not-found fallback ── */
+.sp-not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--ff-body);
+  background: #070C18;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sp-hero {
+    padding: 40px 20px 28px;
+  }
+
+  .sp-hero__icon-wrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  .sp-hero__icon-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .sp-card {
+    padding: 32px 24px;
+  }
+
+  .sp-content {
+    padding: 36px 20px 56px;
+  }
+}
+
+@media (max-width: 540px) {
+  .sp-list {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-hero__title-row {
+    gap: 20px;
+  }
+}

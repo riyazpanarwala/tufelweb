@@ -1,4 +1,21 @@
-import React from "react";
+/**
+ * Footer.jsx — Site footer
+ *
+ * Data sources:
+ *   - SERVICES  from services.js  (no duplication)
+ *   - CONTACT   from config.js
+ *   - SOCIAL    from config.js
+ *   - BRAND     from config.js
+ *
+ * Accessibility:
+ *   - <footer> landmark
+ *   - <nav> for service links
+ *   - Social links have aria-label
+ */
+import React, { memo } from "react";
+import Logo from "./components/Logo";
+import { SERVICES } from "./services";
+import { BRAND, CONTACT, SOCIAL } from "./config";
 import {
   IconFacebook,
   IconInstagram,
@@ -8,139 +25,139 @@ import {
 } from "./Icons";
 import "./Footer.css";
 
-const SERVICES = [
-  { id: 1, label: "Book Keeping / Accounting" },
-  { id: 2, label: "GST Compliances" },
-  { id: 3, label: "Income Tax Return" },
-  { id: 4, label: "ROC / MCA Compliances" },
-  { id: 5, label: "Agreement Drafting" },
-  { id: 6, label: "Other Services" },
+/* ── Icon map (keeps config free of JSX) ── */
+const SOCIAL_ICONS = {
+  facebook: (size) => <IconFacebook size={size} />,
+  instagram: (size) => <IconInstagram size={size} />,
+};
+
+const CONTACT_ROWS = [
+  { icon: <IconMapPin size={12} color="#C8A96E" />, text: CONTACT.address },
+  { icon: <IconPhone size={12} color="#C8A96E" />, text: CONTACT.phoneDisplay },
+  { icon: <IconMail size={12} color="#C8A96E" />, text: CONTACT.email },
 ];
 
-function FooterLink({ label, onClick }) {
+/* ── Sub-components ── */
+
+const FooterServiceLink = memo(function FooterServiceLink({ label, onClick }) {
+  function handleKeyDown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick();
+    }
+  }
+
   return (
-    <button className="footer-link" onClick={onClick}>
-      <span className="footer-link__line" />
+    <button
+      type="button"
+      className="footer-link"
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      aria-label={`View ${label} service details`}
+    >
+      <span className="footer-link__line" aria-hidden="true" />
       {label}
     </button>
   );
-}
+});
 
-function SocialBtn({ href, children, label }) {
+const SocialButton = memo(function SocialButton({ href, children, label }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
+      aria-label={`Follow us on ${label}`}
       className="social-btn"
     >
       {children}
     </a>
   );
-}
+});
 
-export default function Footer({ onServiceSelect }) {
-  const contactDetails = [
-    {
-      icon: <IconMapPin size={12} color="#C8A96E" />,
-      text: "1012, Shilp Epitome, Sindhu Bhavan Road, Bodakdev, Ahmedabad — 380054",
-    },
-    {
-      icon: <IconPhone size={12} color="#C8A96E" />,
-      text: "+919974936751",
-    },
-    {
-      icon: <IconMail size={12} color="#C8A96E" />,
-      text: "tufel.kcg@email.com",
-    },
-  ];
+/* ── Footer ── */
 
+function Footer({ onServiceSelect }) {
   return (
-    <footer className="footer">
-      {/* Top gold strip */}
-      <div className="footer__gold-strip" />
+    <footer className="footer" aria-label="Site footer">
+      {/* Top gold accent strip */}
+      <div className="footer__gold-strip" aria-hidden="true" />
 
       <div className="footer__container">
         <div className="footer__grid">
-          {/* Col 1: About */}
+          {/* Col 1 — Brand + Contact */}
           <div className="footer__col">
-            <img
-              src="img/logo1.png"
-              alt="Panarwala & Associates"
-              className="footer__logo"
-            />
-            <p className="footer__about-text">
+            <Logo variant="light" size="md" className="footer__logo" />
+
+            <p className="footer__tagline">
               Premium tax consulting and preparation services based in
               Ahmedabad, Gujarat.
             </p>
 
-            {/* Contact details */}
-            <div className="footer__contact-list">
-              {contactDetails.map((c, i) => (
+            <address className="footer__contact-list">
+              {CONTACT_ROWS.map((row, i) => (
                 <div key={i} className="footer__contact-item">
-                  <span className="footer__contact-icon">{c.icon}</span>
-                  <span className="footer__contact-text">{c.text}</span>
+                  <span className="footer__contact-icon" aria-hidden="true">
+                    {row.icon}
+                  </span>
+                  <span className="footer__contact-text">{row.text}</span>
                 </div>
               ))}
-            </div>
+            </address>
 
-            {/* Social */}
-            <div className="footer__socials">
-              <SocialBtn
-                href="https://www.facebook.com/profile.php?id=61555952280720"
-                label="Facebook"
-              >
-                <IconFacebook size={14} />
-              </SocialBtn>
-              <SocialBtn
-                href="https://www.instagram.com/panarwala_associates/"
-                label="Instagram"
-              >
-                <IconInstagram size={14} />
-              </SocialBtn>
-            </div>
+            {/* Social links */}
+            <nav className="footer__socials" aria-label="Social media links">
+              {SOCIAL.map((s) => (
+                <SocialButton key={s.id} href={s.href} label={s.label}>
+                  {SOCIAL_ICONS[s.id]?.(14)}
+                </SocialButton>
+              ))}
+            </nav>
           </div>
 
-          {/* Col 2: Services */}
+          {/* Col 2 — Services nav */}
           <div className="footer__col">
-            <h3 className="footer__heading">
+            <h2 className="footer__heading">
               Services
-              <span className="footer__heading-underline" />
-            </h3>
-            <div className="footer__links">
+              <span className="footer__heading-underline" aria-hidden="true" />
+            </h2>
+
+            <nav className="footer__links" aria-label="Services navigation">
               {SERVICES.map((s) => (
-                <FooterLink
+                <FooterServiceLink
                   key={s.id}
                   label={s.label}
                   onClick={() => onServiceSelect(s.id)}
                 />
               ))}
-            </div>
+            </nav>
           </div>
 
-          {/* Col 3: About */}
+          {/* Col 3 — About */}
           <div className="footer__col">
-            <h3 className="footer__heading">
+            <h2 className="footer__heading">
               About Us
-              <span className="footer__heading-underline" />
-            </h3>
-            <div className="footer__about-content">
-              <p className="footer__about-text">
-                Panarwala & Associates is a full-service consultancy firm
-                offering accounting, taxation, corporate compliance, and legal
-                advisory. We combine deep expertise with personal attention to
-                deliver reliable outcomes for every client.
-              </p>
-            </div>
+              <span className="footer__heading-underline" aria-hidden="true" />
+            </h2>
+            <p className="footer__about-text">
+              {BRAND.name} is a full-service consultancy firm offering
+              accounting, taxation, corporate compliance, and legal advisory. We
+              combine deep expertise with personal attention to deliver reliable
+              outcomes for every client.
+            </p>
           </div>
         </div>
 
-        {/* Copyright bar */}
+        {/* Copyright */}
         <div className="footer__copyright">
-          <p>Copyright ©2026 Panarwala & Associates. All rights reserved.</p>
+          <p>
+            Copyright ©{new Date().getFullYear()} {BRAND.name}. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
+
+export default memo(Footer);

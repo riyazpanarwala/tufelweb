@@ -1,4 +1,5 @@
-/* TopBar Container */
+/* TopBar.css */
+
 .topbar {
   background: #070C18;
   border-bottom: 1px solid rgba(200, 169, 110, 0.15);
@@ -6,86 +7,92 @@
 }
 
 .topbar__inner {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-2);
 }
 
-/* Left Section */
+/* ── Left (contact items) ── */
 .topbar__left {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: var(--space-6);
   flex-wrap: wrap;
 }
 
-/* Contact Item */
 .topbar-contact {
   display: flex;
   align-items: center;
   gap: 7px;
   color: rgba(255, 255, 255, 0.58);
-  font-family: 'Outfit', sans-serif;
-  font-size: 12px;
+  font-family: var(--ff-body);
+  font-size: var(--text-xs);
   font-weight: 400;
   letter-spacing: 0.01em;
-  transition: color 0.25s ease;
+  transition: color var(--dur-fast) ease;
   cursor: default;
+  user-select: text;
 }
 
-.topbar-contact:hover {
-  color: #C8A96E;
-}
+.topbar-contact:hover          { color: var(--gold); }
 
 .topbar-contact__icon {
-  color: #C8A96E;
+  color: var(--gold);
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
-/* Right Section */
+/* ── Right (social links) ── */
 .topbar__right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
-/* Social Button */
 .topbar-social {
   width: 28px;
   height: 28px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: rgba(200, 169, 110, 0.10);
   border: 1px solid rgba(200, 169, 110, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #C8A96E;
-  transition: all 0.25s ease;
-  transform: translateY(0);
+  color: var(--gold);
+  transition:
+    background  var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color       var(--dur-fast) ease,
+    transform   var(--dur-fast) ease;
+  outline-offset: 3px;
 }
 
 .topbar-social:hover {
-  background: #C8A96E;
-  border-color: #C8A96E;
+  background: var(--gold);
+  border-color: var(--gold);
   color: #070C18;
   transform: translateY(-2px);
 }
 
-/* Responsive */
+.topbar-social:focus-visible {
+  outline: 2px solid var(--gold);
+}
+
+/* ── Responsive ── */
 @media (max-width: 600px) {
   .topbar__inner {
-    padding: 0 16px;
     justify-content: center;
   }
-  
+
   .topbar__left {
     justify-content: center;
     width: 100%;
+    gap: var(--space-4);
   }
 }
