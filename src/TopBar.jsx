@@ -1,6 +1,6 @@
 import React from "react";
 import { IconPhone, IconMail, IconFacebook, IconInstagram } from "./Icons";
-import "./TopBar.css";
+import "./Topbar.css";
 
 const ContactItem = ({ icon, text }) => (
   <span className="topbar-contact">
