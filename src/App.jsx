@@ -11,6 +11,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Footer from "./Footer";
 import LoadingSpinner from "./components/LoadingSpinner";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 import "./global.css";
 
@@ -55,6 +56,7 @@ function App() {
 
       <Footer onServiceSelect={handleServiceSelect} />
       <Analytics />
+      <WhatsAppButton />
     </div>
   );
 }
