@@ -105,9 +105,9 @@ const SERVICE_DATA = {
 };
 
 // Page transition wrapper
-function PageTransition({ children, key }) {
+function PageTransition({ children, pageKey }) {
   return (
-    <div key={key} className="page-transition">
+    <div key={pageKey} className="page-transition">
       {children}
     </div>
   );
@@ -143,12 +143,12 @@ export default function App() {
 
       <main className="main-content">
         {activeService === null ? (
-          <PageTransition key="home">
+          <PageTransition pageKey="home">
             <Home onServiceSelect={handleServiceSelect} />
           </PageTransition>
         ) : (
           <Suspense fallback={<LoadingSpinner />}>
-            <PageTransition key="service">
+            <PageTransition pageKey="service">
               <ServicePage
                 serviceId={activeService}
                 title={currentService.title}
