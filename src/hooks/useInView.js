@@ -23,14 +23,14 @@ export function useInView(threshold = 0.12, rootMargin = "0px") {
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.unobserve(el); // fire-once → disconnect immediately
+          observer.disconnect(); // ← disconnect entirely, not just unobserve
         }
       },
       { threshold, rootMargin },
     );
 
     observer.observe(el);
-    return () => observer.unobserve(el);
+    return () => observer.disconnect(); // ← was: observer.unobserve(el)
   }, [threshold, rootMargin]);
 
   return [ref, inView];

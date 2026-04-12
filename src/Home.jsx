@@ -16,7 +16,7 @@ export default function Home({ onServiceSelect }) {
   const [heroRef, heroInView] = useInView(0.1);
 
   return (
-    <main className="home-container">
+    <div className="home-container">
       {/* ── Hero Section ── */}
       <section
         className="hero-section"
@@ -38,7 +38,7 @@ export default function Home({ onServiceSelect }) {
         </div>
 
         {/* ── Services Grid ── */}
-        <section aria-label="Our services">
+        <div aria-label="Our services" role="region">
           <ul className="services-grid">
             {SERVICES.map((service, i) => (
               <li key={service.id}>
@@ -50,8 +50,8 @@ export default function Home({ onServiceSelect }) {
               </li>
             ))}
           </ul>
-        </section>
+        </div>
       </section>
-    </main>
+    </div>
   );
 }

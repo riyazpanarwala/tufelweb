@@ -37,6 +37,7 @@ function ServiceCard({ service, index, onSelect }) {
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       aria-label={`${service.title} — click to view details`}
+	  aria-role="button"
     >
       {/* Ambient glow (CSS-only, no JS) */}
       <div className="service-card__glow" aria-hidden="true" />
