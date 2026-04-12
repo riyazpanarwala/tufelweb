@@ -273,3 +273,15 @@ ol {
     --gutter: 20px;
   }
 }
+
+.footer,
+main > section:last-child {
+  padding-bottom: 100px; /* Height of WhatsApp button + spacing */
+}
+
+@media (max-width: 768px) {
+  .footer,
+  main > section:last-child {
+    padding-bottom: 80px;
+  }
+}

@@ -1,19 +1,66 @@
+/* ═══════════════════════════════
+   WHATSAPP FLOATING BUTTON
+   Fixed for mobile view
+═══════════════════════════════ */
+
 .whatsapp-float {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  /* Use safe area inset to prevent hiding behind mobile browser bars */
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  right: calc(20px + env(safe-area-inset-right, 0px));
+  
   background-color: #25d366;
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  
   display: flex;
   align-items: center;
   justify-content: center;
+  
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 9999; /* Increased from 1000 */
   transition: transform 0.2s ease;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ═══════════════════════════════
+   MOBILE FIXES
+═══════════════════════════════ */
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+    right: calc(15px + env(safe-area-inset-right, 0px));
+  }
+
+  .whatsapp-float svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+  .whatsapp-float {
+    width: 44px;
+    height: 44px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    right: calc(12px + env(safe-area-inset-right, 0px));
+  }
+
+  .whatsapp-float svg {
+    width: 22px;
+    height: 22px;
+  }
 }
