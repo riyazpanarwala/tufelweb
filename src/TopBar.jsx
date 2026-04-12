@@ -5,7 +5,7 @@
 import React from "react";
 import { CONTACT, SOCIAL } from "./config";
 import { IconPhone, IconMail, IconFacebook, IconInstagram } from "./Icons";
-import "./TopBar.css";
+import "./TopbarModule.css";
 
 const SOCIAL_ICONS = {
   facebook: (size) => <IconFacebook size={size} />,
