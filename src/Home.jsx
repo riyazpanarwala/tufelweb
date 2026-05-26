@@ -135,15 +135,12 @@ export default function Home({ onServiceSelect }) {
 
           {/* Right — decorative logo panel */}
           <div className="hero-right" aria-hidden="true">
-            <div className="hero-logo-box">
-              <img
-                src={CONFIG_BRAND.logoLight}
-                alt=""
-                className="hero-logo-img"
-                loading="eager"
-              />
-              <p className="hero-logo-tagline">Integrity. Expertise. Excellence.</p>
-            </div>
+            <img
+              src="/img/hero-finance-advisory.png"
+              alt=""
+              className="hero-image"
+              loading="eager"
+            />
           </div>
         </div>
       </section>
@@ -162,6 +159,27 @@ export default function Home({ onServiceSelect }) {
           ))}
         </div>
       </div>
+
+      {/* ── ABOUT SECTION ── */}
+      <section className="about-section" aria-labelledby="about-heading">
+        <div className="about-inner">
+          <div className="about-content">
+            <div className="section-eyebrow about-eyebrow" aria-hidden="true">
+              <span className="section-eyebrow-line" />
+              <span className="section-eyebrow-text">About Us</span>
+            </div>
+            <h2 id="about-heading" className="about-heading">
+              Reliable accounting, taxation and advisory support.
+            </h2>
+            <div className="about-gold-rule" aria-hidden="true" />
+            <p className="about-text">
+              {CONFIG_BRAND.name} is a full-service consultancy firm offering accounting,
+              taxation, corporate compliance, and legal advisory. We combine deep expertise
+              with personal attention to deliver reliable outcomes for every client.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ── SERVICES SECTION ── */}
       <section

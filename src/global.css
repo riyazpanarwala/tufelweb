@@ -219,11 +219,11 @@ ul, ol { list-style: none; }
   :root { --gutter: 20px; }
 }
 
-.footer, main > section:last-child {
+main > section:last-child {
   padding-bottom: 100px;
 }
 @media (max-width: 768px) {
-  .footer, main > section:last-child {
+  main > section:last-child {
     padding-bottom: 80px;
   }
 }

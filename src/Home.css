@@ -150,7 +150,7 @@
 /* Right content — decorative panel */
 .hero-right {
   position: relative;
-  background: linear-gradient(135deg, #f0f4fa 0%, #e8eef8 100%);
+  background: var(--light-gray);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,34 +161,17 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='20' r='1' fill='%230D2545' fill-opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-.hero-logo-box {
-  position: relative;
+  background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 48px;
+  pointer-events: none;
 }
 
-.hero-logo-img {
-  width: 140px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 24px rgba(13,37,69,0.15));
-}
-
-.hero-logo-tagline {
-  font-family: var(--ff-body);
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--navy);
-  letter-spacing: 0.06em;
-  opacity: 0.65;
-  text-align: center;
+.hero-image {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ══════════════════════════
@@ -252,6 +235,51 @@
 /* ══════════════════════════
    SERVICES SECTION
 ══════════════════════════ */
+.about-section {
+  background: var(--white);
+  padding: 76px 0;
+}
+
+.about-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.about-content {
+  max-width: 760px;
+}
+
+.about-eyebrow {
+  margin-bottom: 14px;
+}
+
+.about-heading {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.18;
+  margin-bottom: 0;
+}
+
+.about-gold-rule {
+  width: 52px;
+  height: 3px;
+  background: var(--gold);
+  margin: 20px 0 22px;
+  border-radius: 2px;
+}
+
+.about-text {
+  font-family: var(--ff-body);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-body);
+  max-width: 680px;
+}
+
 .services-section {
   background: var(--off-white);
   padding: 80px 0 80px;
@@ -331,6 +359,7 @@
 }
 
 @media (max-width: 600px) {
+  .about-section { padding: 56px 0; }
   .services-grid { grid-template-columns: 1fr; }
   .pillars-inner { grid-template-columns: 1fr; }
   .pillar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
