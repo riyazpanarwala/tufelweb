@@ -30,13 +30,6 @@ function Footer() {
     <footer className="footer" aria-label="Site footer" id="footer-contact">
       <div className="footer__bottom-bar" role="contentinfo">
         <div className="footer__bottom-inner">
-          <div className="footer__bottom-quote">
-            <span className="footer__bottom-quote-icon" aria-hidden="true">"</span>
-            <p className="footer__bottom-quote-text">
-              Partnering in your financial journey<br />with knowledge, integrity and trust.
-            </p>
-          </div>
-
           <div className="footer__bottom-contacts">
             <div className="footer__bottom-contact-item">
               <span className="footer__bottom-contact-icon" aria-hidden="true">
