@@ -237,7 +237,7 @@
 ══════════════════════════ */
 .about-section {
   background: var(--white);
-  padding: 76px 0;
+  padding: 56px 0 48px;
 }
 
 .about-inner {
@@ -282,7 +282,7 @@
 
 .services-section {
   background: var(--off-white);
-  padding: 80px 0 80px;
+  padding: 56px 0 80px;
 }
 
 .services-inner {
@@ -359,7 +359,8 @@
 }
 
 @media (max-width: 600px) {
-  .about-section { padding: 56px 0; }
+  .about-section { padding: 44px 0 40px; }
+  .services-section { padding-top: 48px; }
   .services-grid { grid-template-columns: 1fr; }
   .pillars-inner { grid-template-columns: 1fr; }
   .pillar-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
