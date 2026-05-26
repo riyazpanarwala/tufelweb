@@ -1,12 +1,8 @@
 /**
- * App.jsx — Root application shell
- *
- * Navigation is state-based (no router dep added).
- * All service data comes from services.js (single source).
+ * App.jsx — Root application shell (Light Theme)
  */
 import React, { useState, Suspense, lazy, useCallback } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import TopBar from "./TopBar";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Footer from "./Footer";
@@ -15,7 +11,6 @@ import WhatsAppButton from "./components/WhatsAppButton";
 
 import "./global.css";
 
-// Lazy-loaded service detail page
 const ServicePage = lazy(() => import("./ServicePage"));
 
 function App() {
@@ -37,8 +32,7 @@ function App() {
         Skip to main content
       </a>
 
-      <TopBar />
-      <Navbar onHome={handleHome} />
+      <Navbar onHome={handleHome} onServiceSelect={handleServiceSelect} />
 
       <main id="main-content" className="main-content">
         {activeServiceId === null ? (
