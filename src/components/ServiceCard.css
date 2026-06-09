@@ -9,6 +9,8 @@
   border-radius: 20px;
   padding: 32px 28px;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
 
   /* Entrance animation state */
   transform: translateY(32px) scale(0.97);

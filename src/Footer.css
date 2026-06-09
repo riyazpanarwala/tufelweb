@@ -165,6 +165,7 @@
   padding: 4px 0;
   text-align: left;
   color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
   font-family: var(--ff-body);
   font-size: 13px;
   font-weight: 300;

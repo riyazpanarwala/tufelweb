@@ -8,7 +8,7 @@
  */
 import React, { memo } from "react";
 import { IconArrowRight } from "../Icons";
-import { TAG_STYLES } from "../services";
+import { getServicePath, TAG_STYLES } from "../services";
 import { useInView } from "../hooks/useInView";
 import "./ServiceCard.css";
 
@@ -16,27 +16,19 @@ function ServiceCard({ service, index, onSelect }) {
   const [ref, inView] = useInView(0.1);
   const tag = TAG_STYLES[service.tag] ?? TAG_STYLES.Advisory;
 
-  function handleClick() {
+  function handleClick(e) {
+    e.preventDefault();
     onSelect(service.id);
   }
 
-  function handleKeyDown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      onSelect(service.id);
-    }
-  }
-
   return (
-    <article
+    <a
       ref={ref}
-      role="button"
-      tabIndex={0}
+      href={getServicePath(service)}
       className={`service-card${inView ? " is-visible" : ""}`}
       style={{ "--index": index }}
       onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      aria-label={`${service.title} — click to view details`}
+      aria-label={`View ${service.title} service details`}
     >
       {/* Ambient glow (CSS-only, no JS) */}
       <div className="service-card__glow" aria-hidden="true" />
@@ -83,7 +75,7 @@ function ServiceCard({ service, index, onSelect }) {
 
       {/* Decorative bottom line */}
       <div className="service-card__gold-line" aria-hidden="true" />
-    </article>
+    </a>
   );
 }
 

@@ -14,7 +14,7 @@
  */
 import React, { memo } from "react";
 import Logo from "./components/Logo";
-import { SERVICES } from "./services";
+import { getServicePath, SERVICES } from "./services";
 import { BRAND, CONTACT, SOCIAL } from "./config";
 import {
   IconFacebook,
@@ -39,25 +39,22 @@ const CONTACT_ROWS = [
 
 /* ── Sub-components ── */
 
-const FooterServiceLink = memo(function FooterServiceLink({ label, onClick }) {
-  function handleKeyDown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      onClick();
-    }
+const FooterServiceLink = memo(function FooterServiceLink({ href, label, onClick }) {
+  function handleClick(e) {
+    e.preventDefault();
+    onClick();
   }
 
   return (
-    <button
-      type="button"
+    <a
+      href={href}
       className="footer-link"
-      onClick={onClick}
-      onKeyDown={handleKeyDown}
+      onClick={handleClick}
       aria-label={`View ${label} service details`}
     >
       <span className="footer-link__line" aria-hidden="true" />
       {label}
-    </button>
+    </a>
   );
 });
 
@@ -126,6 +123,7 @@ function Footer({ onServiceSelect }) {
               {SERVICES.map((s) => (
                 <FooterServiceLink
                   key={s.id}
+                  href={getServicePath(s)}
                   label={s.label}
                   onClick={() => onServiceSelect(s.id)}
                 />
