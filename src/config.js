@@ -17,7 +17,7 @@ export const CONTACT = {
     "1012, Shilp Epitome, Sindhu Bhavan Road, Bodakdev, Ahmedabad — 380054",
   phone: "919974936751",
   phoneDisplay: "+91 99749 36751",
-  email: "tufel.kcg@email.com",
+  email: "tufel.kcg@gmail.com",
 };
 
 export const SOCIAL = [
