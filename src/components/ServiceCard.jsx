@@ -35,14 +35,14 @@ function ServiceCard({ service, index, onSelect }) {
       aria-label={`View ${service.title} service details`}
     >
       {/* Icon */}
-      <div className="service-card__icon-wrapper" aria-hidden="true">
+      <div className="service-card__icon-wrapper">
         <img
           src={service.img}
-          alt=""
+          alt={`${service.title} service icon`}
           className="service-card__icon-img"
           loading="lazy"
-          width={34}
-          height={34}
+          width={48}
+          height={48}
         />
       </div>
 

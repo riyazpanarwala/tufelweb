@@ -48,8 +48,8 @@
 
 /* ── Icon ── */
 .service-card__icon-wrapper {
-  width: 72px;
-  height: 72px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
   background: var(--off-white);
   border: 1px solid var(--border);
@@ -57,25 +57,31 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 20px;
-  transition: all 0.3s var(--ease-out);
+  transition:
+    background-color 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
 }
 
 .service-card.is-visible:hover .service-card__icon-wrapper,
 .service-card.is-visible:focus-visible .service-card__icon-wrapper {
-  background: var(--navy);
-  border-color: var(--navy);
+  background: rgba(200, 169, 110, 0.12);
+  border-color: rgba(200, 169, 110, 0.55);
+  box-shadow: 0 8px 20px rgba(10, 37, 64, 0.1);
+  transform: translateY(-2px);
 }
 
 .service-card__icon-img {
-  width: 34px;
-  height: 34px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  transition: filter 0.3s ease;
+  transition: transform 0.3s var(--ease-out);
 }
 
 .service-card.is-visible:hover .service-card__icon-img,
 .service-card.is-visible:focus-visible .service-card__icon-img {
-  filter: brightness(0) invert(1);
+  transform: scale(1.06);
 }
 
 /* ── Tag (hidden in light theme, shown via header positioning) ── */

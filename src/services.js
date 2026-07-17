@@ -10,7 +10,7 @@ export const SERVICES = [
     seoTitle: "Bookkeeping & Accounting Ahmedabad | Panarwala",
     title: "Book Keeping / Accounting",
     label: "Book Keeping / Accounting",
-    img: "img/accounting.png",
+    img: "/img/accounting.png",
     tag: "Compliance",
     desc: "Tally & custom software bookkeeping, finalization, and review.",
     items: [
@@ -25,7 +25,7 @@ export const SERVICES = [
     seoTitle: "GST Compliance Ahmedabad | Panarwala & Associates",
     title: "GST Compliances",
     label: "GST Compliances",
-    img: "img/gst.png",
+    img: "/img/gst.png",
     tag: "Taxation",
     desc: "Registration, returns, refunds, appeals & departmental representation.",
     items: [
@@ -45,7 +45,7 @@ export const SERVICES = [
     seoTitle: "Income Tax Return Ahmedabad | Panarwala & Associates",
     title: "Income Tax Return",
     label: "Income Tax Return",
-    img: "img/incometax.png",
+    img: "/img/incometax.png",
     tag: "Taxation",
     desc: "PAN, ITR filing, tax planning, demand replies & appeals.",
     items: [
@@ -65,7 +65,7 @@ export const SERVICES = [
     seoTitle: "ROC/MCA Compliance Ahmedabad | Panarwala & Associates",
     title: "ROC / MCA Compliances",
     label: "ROC / MCA Compliances",
-    img: "img/roc.png",
+    img: "/img/roc.png",
     tag: "Corporate",
     desc: "Pvt Ltd, LLP registrations, annual filings, director KYC and compliance.",
     items: [
@@ -90,7 +90,7 @@ export const SERVICES = [
     seoTitle: "Agreement Drafting Ahmedabad | Panarwala & Associates",
     title: "Agreement Drafting",
     label: "Agreement Drafting",
-    img: "img/agreement.png",
+    img: "/img/agreement.png",
     tag: "Legal",
     desc: "Sale deeds, rent agreements, LLP deeds & legal documentation.",
     items: [
@@ -112,7 +112,7 @@ export const SERVICES = [
     seoTitle: "Business Compliance Services Ahmedabad | Panarwala",
     title: "Other Services",
     label: "Other Services",
-    img: "img/other.png",
+    img: "/img/other.png",
     tag: "Advisory",
     desc: "TDS, Udyam, DSC, Trademark, Insurance & management consulting.",
     items: [

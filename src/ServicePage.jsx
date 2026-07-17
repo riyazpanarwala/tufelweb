@@ -83,14 +83,14 @@ export default function ServicePage({ serviceId, onBack }) {
             ref={heroRef}
             className={`sp-hero__title-row${heroInView ? " is-visible" : ""}`}
           >
-            <div className="sp-hero__icon-wrap" aria-hidden="true">
+            <div className="sp-hero__icon-wrap">
               <img
                 src={service.img}
-                alt=""
+                alt={`${service.title} service icon`}
                 className="sp-hero__icon-img"
                 loading="lazy"
-                width={44}
-                height={44}
+                width={60}
+                height={60}
               />
             </div>
 

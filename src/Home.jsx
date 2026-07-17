@@ -133,11 +133,11 @@ export default function Home({ onServiceSelect }) {
             </div>
           </div>
 
-          {/* Right — decorative logo panel */}
-          <div className="hero-right" aria-hidden="true">
+          {/* Right — financial advisory image panel */}
+          <div className="hero-right">
             <img
               src="/img/hero-finance-advisory.jpg"
-              alt=""
+              alt="Financial advisory, accounting and tax consulting services"
               className="hero-image"
               loading="eager"
               fetchPriority="high"

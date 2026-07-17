@@ -6,8 +6,8 @@
 export const BRAND = {
   name: "Panarwala & Associates",
   tagline: "Premium Tax Consulting & Preparation Services",
-  logoLight: "img/panarwala-logo.svg", // logo on dark backgrounds (current)
-  logoDark: "img/panarwala-logo.svg", // swap to a dark-variant if available
+  logoLight: "/img/panarwala-logo.svg", // logo on dark backgrounds (current)
+  logoDark: "/img/panarwala-logo.svg", // swap to a dark-variant if available
   logoAlt: "Panarwala & Associates — Tax Consulting Ahmedabad",
   favicon: "/favicon.ico",
 };
