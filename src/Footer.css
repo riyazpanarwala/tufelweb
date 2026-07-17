@@ -1,240 +1,112 @@
-/* Footer.css */
+/* Footer.css - Bottom footer */
 
-/* ── Shell ── */
 .footer {
-  background: #060B16;
-  border-top: 1px solid rgba(200, 169, 110, 0.12);
+  background: var(--navy);
   position: relative;
 }
 
-/* Top gold gradient strip */
-.footer__gold-strip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold)        25%,
-    var(--gold-bright) 50%,
-    var(--gold)        75%,
-    transparent
-  );
-}
-
-/* ── Container ── */
-.footer__container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-12) var(--gutter) 0;
-}
-
-/* ── Three-column grid ── */
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: var(--space-12);
-}
-
-/* ── Column ── */
-.footer__col {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Logo spacing */
-.footer__logo {
-  margin-bottom: var(--space-5);
-}
-
-/* Tagline / about text */
-.footer__tagline,
-.footer__about-text {
-  font-family: var(--ff-body);
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.42);
-  margin-bottom: var(--space-4);
-}
-
-/* ── Contact list (<address>) ── */
-.footer__contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
-  font-style: normal; /* override browser italic on <address> */
-}
-
-.footer__contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-2);
-}
-
-.footer__contact-icon {
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.footer__contact-text {
-  font-family: var(--ff-body);
-  font-size: 12.5px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.40);
-  line-height: 1.55;
-}
-
-/* ── Social buttons ── */
-.footer__socials {
-  display: flex;
-  gap: var(--space-2);
-}
-
 .social-btn {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
-  background: rgba(200, 169, 110, 0.08);
-  border: 1px solid rgba(200, 169, 110, 0.22);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold);
-  transition:
-    background    var(--dur-fast) var(--ease-out),
-    border-color  var(--dur-fast) ease,
-    color         var(--dur-fast) ease,
-    transform     var(--dur-fast) var(--ease-out),
-    box-shadow    var(--dur-fast) ease;
+  color: var(--white);
+  transition: all var(--dur-fast) ease;
   outline-offset: 3px;
 }
 
 .social-btn:hover {
   background: var(--gold);
   border-color: var(--gold);
-  color: #070C18;
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-gold);
+  color: var(--navy);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.social-btn:focus-visible {
-  outline: 2px solid var(--gold);
+.social-btn:focus-visible { outline: 2px solid var(--gold); }
+
+.footer__bottom-bar {
+  background: var(--navy);
+  padding: var(--space-5) var(--gutter);
 }
 
-/* ── Section heading ── */
-.footer__heading {
-  font-family: var(--ff-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: #F0EBE0;
-  margin-bottom: var(--space-1);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid rgba(200, 169, 110, 0.15);
-  position: relative;
-}
-
-.footer__heading-underline {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 30px;
-  height: 1px;
-  background: var(--gold);
-  display: block;
-}
-
-/* ── Service links ── */
-.footer__links {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: var(--space-4);
-}
-
-.footer-link {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px 0;
-  text-align: left;
-  color: rgba(255, 255, 255, 0.45);
-  text-decoration: none;
-  font-family: var(--ff-body);
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-  transition:
-    color      var(--dur-fast) ease,
-    transform  var(--dur-fast) ease;
-  outline-offset: 3px;
-}
-
-.footer-link:hover {
-  color: var(--gold);
-  transform: translateX(5px);
-}
-
-.footer-link:focus-visible {
-  outline: 2px solid var(--gold);
-  border-radius: var(--radius-sm);
-}
-
-.footer-link__line {
-  width: 14px;
-  height: 1px;
-  background: var(--gold-line);
-  flex-shrink: 0;
-  transition: background var(--dur-fast) ease;
-}
-
-.footer-link:hover .footer-link__line {
-  background: var(--gold);
-}
-
-/* About col content spacing */
-.footer__about-text {
-  margin-top: var(--space-4);
-}
-
-/* ── Copyright bar ── */
-.footer__copyright {
-  margin-top: var(--space-12);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: var(--space-4) 0 var(--space-5);
+.footer__bottom-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-5);
+}
+
+.footer__bottom-contacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer__bottom-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.72);
+  font-family: var(--ff-body);
+  font-size: 13px;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+a.footer__bottom-contact-item:hover,
+a.footer__bottom-contact-item:focus-visible {
+  color: var(--white);
+}
+
+.footer__bottom-contact-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.footer__bottom-socials {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footer__copyright {
+  background: var(--navy-dark);
+  padding: var(--space-3) var(--gutter);
+  text-align: center;
 }
 
 .footer__copyright p {
   font-family: var(--ff-body);
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.22);
+  color: rgba(255,255,255,0.35);
   letter-spacing: 0.03em;
   margin: 0;
 }
 
-/* ── Responsive ── */
 @media (max-width: 900px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
+  .footer__bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__bottom-contacts {
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 580px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  .footer__container {
-    padding: var(--space-10) var(--gutter) 0;
+  .footer__bottom-contacts {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
   }
 }

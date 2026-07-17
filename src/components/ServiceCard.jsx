@@ -1,23 +1,27 @@
 /**
- * ServiceCard.jsx — Accessible, animated service card
- *
- * Props:
- *   service  { id, title, img, tag, desc }
- *   index    number   — stagger index for entrance animation
- *   onSelect function — called with service.id on click / Enter / Space
+ * ServiceCard.jsx — Light theme card (centered icon + title + desc + gold bar)
  */
 import React, { memo } from "react";
-import { IconArrowRight } from "../Icons";
-import { getServicePath, TAG_STYLES } from "../services";
 import { useInView } from "../hooks/useInView";
+import { getServicePath } from "../services";
 import "./ServiceCard.css";
 
 function ServiceCard({ service, index, onSelect }) {
   const [ref, inView] = useInView(0.1);
-  const tag = TAG_STYLES[service.tag] ?? TAG_STYLES.Advisory;
 
-  function handleClick(e) {
-    e.preventDefault();
+  function handleClick(event) {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
     onSelect(service.id);
   }
 
@@ -30,33 +34,16 @@ function ServiceCard({ service, index, onSelect }) {
       onClick={handleClick}
       aria-label={`View ${service.title} service details`}
     >
-      {/* Ambient glow (CSS-only, no JS) */}
-      <div className="service-card__glow" aria-hidden="true" />
-
-      {/* Header row: icon + tag */}
-      <div className="service-card__header">
-        <div className="service-card__icon-wrapper" aria-hidden="true">
-          <img
-            src={service.img}
-            alt=""
-            className="service-card__icon-img"
-            loading="lazy"
-            width={30}
-            height={30}
-          />
-        </div>
-
-        <span
-          className="service-card__tag"
-          style={{
-            "--tag-bg": tag.bg,
-            "--tag-color": tag.color,
-            "--tag-border": `${tag.color}22`,
-          }}
-          aria-label={`Category: ${service.tag}`}
-        >
-          {service.tag}
-        </span>
+      {/* Icon */}
+      <div className="service-card__icon-wrapper">
+        <img
+          src={service.img}
+          alt={`${service.title} service icon`}
+          className="service-card__icon-img"
+          loading="lazy"
+          width={48}
+          height={48}
+        />
       </div>
 
       {/* Body */}
@@ -65,15 +52,7 @@ function ServiceCard({ service, index, onSelect }) {
         <p className="service-card__desc">{service.desc}</p>
       </div>
 
-      {/* CTA */}
-      <div className="service-card__cta" aria-hidden="true">
-        View details
-        <span className="service-card__cta-arrow">
-          <IconArrowRight size={13} color="#C8A96E" />
-        </span>
-      </div>
-
-      {/* Decorative bottom line */}
+      {/* Gold underline */}
       <div className="service-card__gold-line" aria-hidden="true" />
     </a>
   );

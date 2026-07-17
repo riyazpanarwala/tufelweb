@@ -1,19 +1,19 @@
-/* LoadingSpinner.css */
+/* LoadingSpinner.css — Light Theme */
 
 .loading-spinner-container {
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #070C18, #0A1020);
+  background: var(--off-white);
 }
 
 .loading-spinner {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 2px solid rgba(200, 169, 110, 0.15);
-  border-top-color: var(--gold);
+  border: 2px solid var(--border);
+  border-top-color: var(--navy);
   animation: spinner-rotate 0.8s linear infinite;
 }
 
@@ -21,15 +21,8 @@
   to { transform: rotate(360deg); }
 }
 
-/* Screen-reader only utility */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
 }
