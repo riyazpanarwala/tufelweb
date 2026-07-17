@@ -14,6 +14,16 @@ import { SEO, SITE_URL } from "./config";
 import "./global.css";
 
 const ServicePage = lazy(() => import("./ServicePage"));
+const SITE_URL = "https://tufel.panarwala.in";
+
+function getServiceFromPath() {
+  const match = window.location.pathname.match(/^\/services\/([^/]+)\/?$/);
+  return match ? getServiceBySlug(match[1]) : null;
+}
+
+function setMetaContent(selector, content) {
+  document.querySelector(selector)?.setAttribute("content", content);
+}
 
 function getServiceFromLocation() {
   const match = window.location.pathname.match(/^\/services\/([^/]+)\/?$/);
