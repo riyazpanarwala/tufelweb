@@ -5,7 +5,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "./components/Logo";
 import { IconMenu, IconClose } from "./Icons";
-import { SERVICES } from "./services";
 import "./Navbar.css";
 
 export default function Navbar({ onHome, onServiceSelect }) {
