@@ -6,6 +6,8 @@
 export const SERVICES = [
   {
     id: 1,
+    slug: "bookkeeping-accounting",
+    seoTitle: "Bookkeeping & Accounting Ahmedabad | Panarwala",
     title: "Book Keeping / Accounting",
     label: "Book Keeping / Accounting",
     img: "img/accounting.png",
@@ -19,6 +21,8 @@ export const SERVICES = [
   },
   {
     id: 2,
+    slug: "gst-compliances",
+    seoTitle: "GST Compliance Ahmedabad | Panarwala & Associates",
     title: "GST Compliances",
     label: "GST Compliances",
     img: "img/gst.png",
@@ -37,6 +41,8 @@ export const SERVICES = [
   },
   {
     id: 3,
+    slug: "income-tax-return",
+    seoTitle: "Income Tax Return Ahmedabad | Panarwala & Associates",
     title: "Income Tax Return",
     label: "Income Tax Return",
     img: "img/incometax.png",
@@ -55,6 +61,8 @@ export const SERVICES = [
   },
   {
     id: 4,
+    slug: "roc-mca-compliances",
+    seoTitle: "ROC/MCA Compliance Ahmedabad | Panarwala & Associates",
     title: "ROC / MCA Compliances",
     label: "ROC / MCA Compliances",
     img: "img/roc.png",
@@ -78,6 +86,8 @@ export const SERVICES = [
   },
   {
     id: 5,
+    slug: "agreement-drafting",
+    seoTitle: "Agreement Drafting Ahmedabad | Panarwala & Associates",
     title: "Agreement Drafting",
     label: "Agreement Drafting",
     img: "img/agreement.png",
@@ -98,6 +108,8 @@ export const SERVICES = [
   },
   {
     id: 6,
+    slug: "other-services",
+    seoTitle: "Business Compliance Services Ahmedabad | Panarwala",
     title: "Other Services",
     label: "Other Services",
     img: "img/other.png",
@@ -133,4 +145,12 @@ export const TAG_STYLES = {
 /** Find a service by id — safe utility */
 export function getServiceById(id) {
   return SERVICES.find((s) => s.id === id) ?? null;
+}
+
+export function getServiceBySlug(slug) {
+  return SERVICES.find((service) => service.slug === slug) ?? null;
+}
+
+export function getServicePath(service) {
+  return `/services/${service.slug}`;
 }

@@ -31,18 +31,18 @@ function Footer() {
       <div className="footer__bottom-bar" role="contentinfo">
         <div className="footer__bottom-inner">
           <div className="footer__bottom-contacts">
-            <div className="footer__bottom-contact-item">
+            <a className="footer__bottom-contact-item" href={`tel:+${CONTACT.phone}`}>
               <span className="footer__bottom-contact-icon" aria-hidden="true">
                 <IconPhone size={14} color="var(--gold)" />
               </span>
               {CONTACT.phoneDisplay}
-            </div>
-            <div className="footer__bottom-contact-item">
+            </a>
+            <a className="footer__bottom-contact-item" href={`mailto:${CONTACT.email}`}>
               <span className="footer__bottom-contact-icon" aria-hidden="true">
                 <IconMail size={14} color="var(--gold)" />
               </span>
               {CONTACT.email}
-            </div>
+            </a>
             <div className="footer__bottom-contact-item">
               <span className="footer__bottom-contact-icon" aria-hidden="true">
                 <IconMapPin size={14} color="var(--gold)" />

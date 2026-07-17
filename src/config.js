@@ -12,12 +12,14 @@ export const BRAND = {
   favicon: "/favicon.ico",
 };
 
+export const SITE_URL = "https://tufel.panarwala.in";
+
 export const CONTACT = {
   address:
     "102, Shilp Epitome, Sindhu Bhavan Road, Bodakdev, Ahmedabad — 380054",
   phone: "919974936751",
   phoneDisplay: "+91 99749 36751",
-  email: "tufel.kcg@email.com",
+  email: "tufel.kcg@gmail.com",
 };
 
 export const SOCIAL = [
@@ -36,8 +38,8 @@ export const SOCIAL = [
 export const SEO = {
   title: "Panarwala & Associates | Tax Consulting Ahmedabad",
   description:
-    "Premium tax consulting and preparation services in Ahmedabad — GST, ITR, ROC, Accounting, Agreement Drafting and more.",
+    "Tax, GST, accounting and business compliance consultants in Ahmedabad. Get professional help with ITR, ROC, bookkeeping and agreement drafting.",
   keywords:
     "tax consultant ahmedabad, gst registration, income tax return, roc compliance, accounting",
-  ogImage: "/og-image.png",
+  ogImage: "/img/logo.png",
 };

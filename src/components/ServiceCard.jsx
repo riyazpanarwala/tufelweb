@@ -3,29 +3,36 @@
  */
 import React, { memo } from "react";
 import { useInView } from "../hooks/useInView";
+import { getServicePath } from "../services";
 import "./ServiceCard.css";
 
 function ServiceCard({ service, index, onSelect }) {
   const [ref, inView] = useInView(0.1);
 
-  function handleClick() { onSelect(service.id); }
-  function handleKeyDown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      onSelect(service.id);
+  function handleClick(event) {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
     }
+
+    event.preventDefault();
+    onSelect(service.id);
   }
 
   return (
-    <article
+    <a
       ref={ref}
-      role="button"
-      tabIndex={0}
+      href={getServicePath(service)}
       className={`service-card${inView ? " is-visible" : ""}`}
       style={{ "--index": index }}
       onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      aria-label={`${service.title} — click to view details`}
+      aria-label={`View ${service.title} service details`}
     >
       {/* Icon */}
       <div className="service-card__icon-wrapper" aria-hidden="true">
@@ -47,7 +54,7 @@ function ServiceCard({ service, index, onSelect }) {
 
       {/* Gold underline */}
       <div className="service-card__gold-line" aria-hidden="true" />
-    </article>
+    </a>
   );
 }
 

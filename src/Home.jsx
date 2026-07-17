@@ -94,8 +94,8 @@ export default function Home({ onServiceSelect }) {
               <span className="hero-eyebrow-text">Trusted | Professional | Reliable</span>
             </div>
 
-            <h1 className="hero-heading">Expert Financial Advice.</h1>
-            <p className="hero-heading-line2">Trusted CA Solutions.</p>
+            <h1 className="hero-heading">Tax, GST & Accounting Consultants in Ahmedabad.</h1>
+            <p className="hero-heading-line2">Reliable compliance and business advisory.</p>
 
             <div className="hero-gold-rule" aria-hidden="true" />
 
@@ -136,10 +136,13 @@ export default function Home({ onServiceSelect }) {
           {/* Right — decorative logo panel */}
           <div className="hero-right" aria-hidden="true">
             <img
-              src="/img/hero-finance-advisory.png"
+              src="/img/hero-finance-advisory.jpg"
               alt=""
               className="hero-image"
               loading="eager"
+              fetchPriority="high"
+              width="1200"
+              height="900"
             />
           </div>
         </div>

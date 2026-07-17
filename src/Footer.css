@@ -59,6 +59,12 @@
   font-family: var(--ff-body);
   font-size: 13px;
   line-height: 1.45;
+  text-decoration: none;
+}
+
+a.footer__bottom-contact-item:hover,
+a.footer__bottom-contact-item:focus-visible {
+  color: var(--white);
 }
 
 .footer__bottom-contact-icon {

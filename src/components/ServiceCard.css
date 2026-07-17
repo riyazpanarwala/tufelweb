@@ -9,6 +9,7 @@
   padding: 32px 24px 28px;
   cursor: pointer;
   text-align: center;
+  text-decoration: none;
 
   /* Entrance animation */
   transform: translateY(24px);
