@@ -16,7 +16,7 @@ export const SITE_URL = "https://tufel.panarwala.in";
 
 export const CONTACT = {
   address:
-    "102, Shilp Epitome, Sindhu Bhavan Road, Bodakdev, Ahmedabad — 380054",
+    "B-302, Al Hamd 4, Nr. Kadri Party Plot, Sarkhej, Ahmedabad — 380055",
   phone: "919974936751",
   phoneDisplay: "+91 99749 36751",
   email: "tufel.kcg@gmail.com",
