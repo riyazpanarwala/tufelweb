@@ -15,14 +15,14 @@
   outline-offset: 4px;
   transition: opacity var(--dur-fast) ease;
 }
-.logo--interactive:hover { opacity: 0.8; }
+.logo--interactive:hover { opacity: 0.85; }
 .logo--interactive:focus-visible { outline: 2px solid var(--navy); }
 
-.logo--sm .logo__img { width: 154px; }
-.logo--md .logo__img { width: 196px; }
-.logo--lg .logo__img { width: 246px; }
+.logo--sm .logo__img, .logo--sm .logo__svg { width: 170px; }
+.logo--md .logo__img, .logo--md .logo__svg { width: 225px; }
+.logo--lg .logo__img, .logo--lg .logo__svg { width: 275px; }
 
-.logo__img {
+.logo__img, .logo__svg {
   height: auto;
   max-width: 100%;
   object-fit: contain;
@@ -31,6 +31,6 @@
 }
 
 @media (max-width: 640px) {
-  .logo--md .logo__img { width: 176px; }
-  .logo--lg .logo__img { width: 218px; }
+  .logo--md .logo__img, .logo--md .logo__svg { width: 195px; }
+  .logo--lg .logo__img, .logo--lg .logo__svg { width: 240px; }
 }

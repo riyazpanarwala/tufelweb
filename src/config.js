@@ -6,8 +6,8 @@
 export const BRAND = {
   name: "Panarwala & Associates",
   tagline: "Premium Tax Consulting & Preparation Services",
-  logoLight: "/img/panarwala-logo.svg", // logo on dark backgrounds (current)
-  logoDark: "/img/panarwala-logo.svg", // swap to a dark-variant if available
+  logoLight: "/img/panarwala-logo-light.svg", // logo on dark backgrounds
+  logoDark: "/img/panarwala-logo-dark.svg",   // logo on light backgrounds (header)
   logoAlt: "Panarwala & Associates — Tax Consulting Ahmedabad",
   favicon: "/favicon.ico",
 };
@@ -41,5 +41,5 @@ export const SEO = {
     "Panarwala & Associates — Top tax, GST, accounting & corporate compliance consultants in Ahmedabad. Expert ITR filing, ROC compliance, bookkeeping & agreement drafting.",
   keywords:
     "Panarwala & Associates, Panarwala tax consultant, tax consultant ahmedabad, gst registration ahmedabad, income tax return filing, roc compliance, bookkeeping ahmedabad",
-  ogImage: "/img/logo.png",
+  ogImage: "/img/og-image.png",
 };
