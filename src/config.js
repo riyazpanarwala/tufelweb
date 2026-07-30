@@ -14,12 +14,18 @@ export const BRAND = {
 
 export const SITE_URL = "https://tufel.panarwala.in";
 
+const web3Key =
+  (typeof process !== "undefined" && process.env && process.env.VITE_WEB3FORMS_KEY) ||
+  (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_WEB3FORMS_KEY) ||
+  "dac1a622-72d1-49f0-bf51-2c9e74d19041";
+
 export const CONTACT = {
   address:
     "B-302, Al Hamd 4, Nr. Kadri Party Plot, Sarkhej, Ahmedabad — 380055",
   phone: "919974936751",
   phoneDisplay: "+91 99749 36751",
   email: "tufel.kcg@gmail.com",
+  web3formsKey: web3Key,
 };
 
 export const SOCIAL = [

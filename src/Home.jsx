@@ -5,6 +5,7 @@
 import React from "react";
 import { SERVICES } from "./services";
 import ServiceCard from "./components/ServiceCard";
+import ContactSection from "./components/ContactSection";
 import { useInView } from "./hooks/useInView";
 import { BRAND as CONFIG_BRAND } from "./config";
 import "./Home.css";
@@ -61,11 +62,18 @@ const PILLARS = [
   },
 ];
 
+const CATEGORIES = ["All", "Taxation", "Compliance", "Corporate", "Legal", "Advisory"];
+
 export default function Home({ onServiceSelect }) {
   const [heroRef, heroInView] = useInView(0.1);
+  const [activeCategory, setActiveCategory] = React.useState("All");
+
+  const filteredServices = activeCategory === "All"
+    ? SERVICES
+    : SERVICES.filter((s) => s.tag === activeCategory);
 
   const scrollToContact = () => {
-    const el = document.getElementById("footer-contact");
+    const el = document.getElementById("contact-form-section") || document.getElementById("footer-contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -142,6 +150,13 @@ export default function Home({ onServiceSelect }) {
               width="1200"
               height="900"
             />
+            <div className="hero-trust-badge">
+              <div className="hero-trust-icon" aria-hidden="true">✓</div>
+              <div className="hero-trust-text">
+                <span className="trust-title">100% Compliant &amp; Trusted</span>
+                <span className="trust-subtitle">Tax, GST &amp; Accounting Advisory</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -202,8 +217,24 @@ export default function Home({ onServiceSelect }) {
             </p>
           </header>
 
+          {/* Category Filter Tabs */}
+          <div className="services-filter-tabs" role="tablist" aria-label="Filter services by category">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                className={`filter-tab${activeCategory === cat ? " active" : ""}`}
+                onClick={() => setActiveCategory(cat)}
+                role="tab"
+                aria-selected={activeCategory === cat}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           <ul className="services-grid">
-            {SERVICES.map((service, i) => (
+            {filteredServices.map((service, i) => (
               <li key={service.id}>
                 <ServiceCard
                   service={service}
@@ -215,6 +246,9 @@ export default function Home({ onServiceSelect }) {
           </ul>
         </div>
       </section>
+
+      {/* ── CONSULTATION & CONTACT FORM SECTION ── */}
+      <ContactSection />
     </div>
   );
 }
