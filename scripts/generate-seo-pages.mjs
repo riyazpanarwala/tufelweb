@@ -241,6 +241,7 @@ const sitemapEntries = [
   })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapEntries.map((e) => `  <url>\n    <loc>${e.url}</loc>\n    <lastmod>${lastModified}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`).join("\n")}
 </urlset>
