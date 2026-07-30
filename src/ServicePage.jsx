@@ -7,7 +7,7 @@
 import React, { useEffect } from "react";
 import { getServiceById } from "./services";
 import { useInView } from "./hooks/useInView";
-import { IconChevronRight } from "./Icons";
+import { IconChevronRight, ServiceIcon } from "./Icons";
 import "./ServicePage.css";
 
 /* ── List item with staggered entrance ── */
@@ -84,18 +84,14 @@ export default function ServicePage({ serviceId, onBack }) {
             className={`sp-hero__title-row${heroInView ? " is-visible" : ""}`}
           >
             <div className="sp-hero__icon-wrap">
-              <img
-                src={service.img}
-                alt={`${service.title} service icon`}
-                className="sp-hero__icon-img"
-                loading="lazy"
-                width={60}
-                height={60}
-              />
+              <ServiceIcon serviceId={service.id} size={48} color="var(--gold-bright)" />
             </div>
 
             <div>
-              <p className="sp-hero__eyebrow">Our Services</p>
+              <div className="sp-hero__badge-row">
+                <span className="sp-hero__eyebrow">Our Services</span>
+                {service.tag && <span className="sp-hero__tag">{service.tag}</span>}
+              </div>
               <h1 className="sp-hero__heading">{service.title}</h1>
             </div>
           </div>
@@ -110,7 +106,12 @@ export default function ServicePage({ serviceId, onBack }) {
         <div className="sp-card">
           <div className="sp-card__glow" aria-hidden="true" />
 
-          <p className="sp-card__label">What we offer</p>
+          <div className="sp-card__header-flex">
+            <div>
+              <p className="sp-card__label">Key Deliverables &amp; Scope</p>
+              <h2 className="sp-card__subheading">What is included in this service:</h2>
+            </div>
+          </div>
 
           <ul className="sp-list" aria-label={`${service.title} offerings`}>
             {service.items.map((item, i) => (
@@ -118,7 +119,7 @@ export default function ServicePage({ serviceId, onBack }) {
             ))}
           </ul>
 
-          {/* Back CTA */}
+          {/* Action CTAs */}
           <div className="sp-card__footer">
             <button
               type="button"
