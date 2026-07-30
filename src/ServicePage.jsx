@@ -95,7 +95,10 @@ export default function ServicePage({ serviceId, onBack }) {
             </div>
 
             <div>
-              <p className="sp-hero__eyebrow">Our Services</p>
+              <div className="sp-hero__badge-row">
+                <span className="sp-hero__eyebrow">Our Services</span>
+                {service.tag && <span className="sp-hero__tag">{service.tag}</span>}
+              </div>
               <h1 className="sp-hero__heading">{service.title}</h1>
             </div>
           </div>
@@ -110,7 +113,12 @@ export default function ServicePage({ serviceId, onBack }) {
         <div className="sp-card">
           <div className="sp-card__glow" aria-hidden="true" />
 
-          <p className="sp-card__label">What we offer</p>
+          <div className="sp-card__header-flex">
+            <div>
+              <p className="sp-card__label">Key Deliverables &amp; Scope</p>
+              <h2 className="sp-card__subheading">What is included in this service:</h2>
+            </div>
+          </div>
 
           <ul className="sp-list" aria-label={`${service.title} offerings`}>
             {service.items.map((item, i) => (
@@ -118,7 +126,7 @@ export default function ServicePage({ serviceId, onBack }) {
             ))}
           </ul>
 
-          {/* Back CTA */}
+          {/* Action CTAs */}
           <div className="sp-card__footer">
             <button
               type="button"

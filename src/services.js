@@ -13,6 +13,7 @@ export const SERVICES = [
     img: "/img/accounting.png",
     tag: "Compliance",
     desc: "Tally & custom software bookkeeping, finalization, and review.",
+    highlights: ["Book Keeping", "Finalization of Books", "Accounts Review"],
     items: [
       "Book Keeping (Tally / Customized Software — India / UAE / Saudi Arabia)",
       "Finalization of Books",
@@ -28,6 +29,7 @@ export const SERVICES = [
     img: "/img/gst.png",
     tag: "Taxation",
     desc: "Registration, returns, refunds, appeals & departmental representation.",
+    highlights: ["GST Registration", "GST Returns", "Refunds & Appeals"],
     items: [
       "GST Registration (Regular / Composition / Casual Tax Payer)",
       "GST Return",
@@ -48,6 +50,7 @@ export const SERVICES = [
     img: "/img/incometax.png",
     tag: "Taxation",
     desc: "PAN, ITR filing, tax planning, demand replies & appeals.",
+    highlights: ["ITR Filing", "Tax Planning", "Notice & Appeals"],
     items: [
       "PAN (Registration / Updation / Modification / Surrender)",
       "IT Return (Original / Revised / Belated / Updated / Rectification of Returns)",
@@ -68,6 +71,7 @@ export const SERVICES = [
     img: "/img/roc.png",
     tag: "Corporate",
     desc: "Pvt Ltd, LLP registrations, annual filings, director KYC and compliance.",
+    highlights: ["Pvt Ltd & LLP Reg.", "ROC Annual Filings", "Director KYC"],
     items: [
       "Private Limited Registrations",
       "LLP Registrations",
@@ -93,6 +97,7 @@ export const SERVICES = [
     img: "/img/agreement.png",
     tag: "Legal",
     desc: "Sale deeds, rent agreements, LLP deeds & legal documentation.",
+    highlights: ["Legal Agreements", "Rent & Sale Deeds", "LLP & HUF Deeds"],
     items: [
       "Agreement Drafting",
       "HUF Registration",
@@ -115,6 +120,7 @@ export const SERVICES = [
     img: "/img/other.png",
     tag: "Advisory",
     desc: "TDS, Udyam, DSC, Trademark, Insurance & management consulting.",
+    highlights: ["TDS & Trademark", "DSC & Udyam", "Loans & Certificates"],
     items: [
       "TAN Registration / Updation",
       "TDS Refund",
