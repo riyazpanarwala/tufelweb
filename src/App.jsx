@@ -62,15 +62,19 @@ function App() {
       ? `${service.desc} Professional support from Panarwala & Associates in Ahmedabad.`
       : SEO.description;
     const canonical = `${SITE_URL}${service ? getServicePath(service) : "/"}`;
+    const ogImage = `${SITE_URL}${SEO.ogImage}`;
 
     document.title = title;
     document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
     setMetaContent('meta[name="description"]', description);
+    setMetaContent('meta[name="keywords"]', SEO.keywords);
     setMetaContent('meta[property="og:title"]', title);
     setMetaContent('meta[property="og:description"]', description);
     setMetaContent('meta[property="og:url"]', canonical);
+    setMetaContent('meta[property="og:image"]', ogImage);
     setMetaContent('meta[name="twitter:title"]', title);
     setMetaContent('meta[name="twitter:description"]', description);
+    setMetaContent('meta[name="twitter:image"]', ogImage);
   }, [activeServiceId]);
 
   return (

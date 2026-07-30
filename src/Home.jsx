@@ -94,7 +94,7 @@ export default function Home({ onServiceSelect }) {
               <span className="hero-eyebrow-text">Trusted | Professional | Reliable</span>
             </div>
 
-            <h1 className="hero-heading">Tax, GST & Accounting Consultants in Ahmedabad.</h1>
+            <h1 className="hero-heading">Panarwala &amp; Associates — Tax, GST &amp; Accounting Consultants in Ahmedabad</h1>
             <p className="hero-heading-line2">Reliable compliance and business advisory.</p>
 
             <div className="hero-gold-rule" aria-hidden="true" />
