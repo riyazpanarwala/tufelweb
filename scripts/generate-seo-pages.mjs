@@ -24,6 +24,11 @@ function localBusinessSchema() {
     "@type": "AccountingService",
     "@id": `${SITE_URL}/#business`,
     name: BRAND.name,
+    legalName: BRAND.name,
+    brand: {
+      "@type": "Brand",
+      name: BRAND.name,
+    },
     url: `${SITE_URL}/`,
     logo: `${SITE_URL}/img/logo.png`,
     image: `${SITE_URL}/img/hero-finance-advisory.jpg`,
@@ -32,13 +37,21 @@ function localBusinessSchema() {
     priceRange: "₹₹",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1012, Shilp Epitome, Sindhu Bhavan Road, Bodakdev",
+      streetAddress: "B-302, Al Hamd 4, Nr. Kadri Party Plot, Sarkhej",
       addressLocality: "Ahmedabad",
       addressRegion: "Gujarat",
-      postalCode: "380054",
+      postalCode: "380055",
       addressCountry: "IN",
     },
     areaServed: { "@type": "City", name: "Ahmedabad" },
+    knowsAbout: [
+      "Income Tax Return Filing",
+      "GST Registration and Compliance",
+      "Bookkeeping & Accounting",
+      "ROC MCA Corporate Filings",
+      "Agreement Drafting & Legal Documentation",
+      "Tax Planning & Financial Advisory",
+    ],
     sameAs: SOCIAL.map(({ href }) => href),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -63,6 +76,23 @@ function serviceSchema(service) {
     "@context": "https://schema.org",
     "@graph": [
       business,
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: service.title,
+            item: `${SITE_URL}${getServicePath(service)}`,
+          },
+        ],
+      },
       {
         "@type": "Service",
         "@id": `${SITE_URL}${getServicePath(service)}#service`,
@@ -98,7 +128,7 @@ function homeContent() {
     <main class="seo-prerender" id="main-content">
       <header>
         <p>Trusted | Professional | Reliable</p>
-        <h1>Tax, GST &amp; Accounting Consultants in Ahmedabad</h1>
+        <h1>Panarwala &amp; Associates — Tax, GST &amp; Accounting Consultants in Ahmedabad</h1>
         <p>Panarwala &amp; Associates provides accounting, taxation, corporate compliance and legal advisory support for individuals and businesses.</p>
       </header>
       <section aria-labelledby="services-heading">
@@ -202,10 +232,17 @@ const lastModified = new Intl.DateTimeFormat("en-CA", {
   month: "2-digit",
   day: "2-digit",
 }).format(new Date());
-const sitemapUrls = [`${SITE_URL}/`, ...SERVICES.map((service) => `${SITE_URL}${getServicePath(service)}`)];
+const sitemapEntries = [
+  { url: `${SITE_URL}/`, priority: "1.0", changefreq: "weekly" },
+  ...SERVICES.map((service) => ({
+    url: `${SITE_URL}${getServicePath(service)}`,
+    priority: "0.8",
+    changefreq: "weekly",
+  })),
+];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapUrls.map((url) => `  <url><loc>${url}</loc><lastmod>${lastModified}</lastmod></url>`).join("\n")}
+${sitemapEntries.map((e) => `  <url>\n    <loc>${e.url}</loc>\n    <lastmod>${lastModified}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`).join("\n")}
 </urlset>
 `;
 await writeFile(path.join(distDir, "sitemap.xml"), sitemap, "utf8");

@@ -36,10 +36,10 @@ export const SOCIAL = [
 ];
 
 export const SEO = {
-  title: "Panarwala & Associates | Tax Consulting Ahmedabad",
+  title: "Panarwala & Associates | Tax, GST & Accounting Consultants Ahmedabad",
   description:
-    "Tax, GST, accounting and business compliance consultants in Ahmedabad. Get professional help with ITR, ROC, bookkeeping and agreement drafting.",
+    "Panarwala & Associates — Top tax, GST, accounting & corporate compliance consultants in Ahmedabad. Expert ITR filing, ROC compliance, bookkeeping & agreement drafting.",
   keywords:
-    "tax consultant ahmedabad, gst registration, income tax return, roc compliance, accounting",
+    "Panarwala & Associates, Panarwala tax consultant, tax consultant ahmedabad, gst registration ahmedabad, income tax return filing, roc compliance, bookkeeping ahmedabad",
   ogImage: "/img/logo.png",
 };

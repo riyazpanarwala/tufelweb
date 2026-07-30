@@ -7,7 +7,7 @@ export const SERVICES = [
   {
     id: 1,
     slug: "bookkeeping-accounting",
-    seoTitle: "Bookkeeping & Accounting Ahmedabad | Panarwala",
+    seoTitle: "Bookkeeping & Accounting Ahmedabad | Panarwala & Associates",
     title: "Book Keeping / Accounting",
     label: "Book Keeping / Accounting",
     img: "/img/accounting.png",
@@ -109,7 +109,7 @@ export const SERVICES = [
   {
     id: 6,
     slug: "other-services",
-    seoTitle: "Business Compliance Services Ahmedabad | Panarwala",
+    seoTitle: "Business Compliance Services Ahmedabad | Panarwala & Associates",
     title: "Other Services",
     label: "Other Services",
     img: "/img/other.png",
