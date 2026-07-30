@@ -18,9 +18,9 @@ export default function Navbar({ onHome, onServiceSelect }) {
 
       // Section tracking
       const servicesEl = document.getElementById("services-section");
-      const contactEl = document.getElementById("footer-contact");
+      const contactEl = document.getElementById("contact-form-section") || document.getElementById("footer-contact");
 
-      if (contactEl && window.scrollY + window.innerHeight >= document.body.offsetHeight - 120) {
+      if (contactEl && window.scrollY >= contactEl.offsetTop - 180) {
         setActiveSection("contact");
       } else if (servicesEl && window.scrollY >= servicesEl.offsetTop - 140) {
         setActiveSection("services");
@@ -51,8 +51,9 @@ export default function Navbar({ onHome, onServiceSelect }) {
   const scrollToContact = () => {
     setMenuOpen(false);
     setActiveSection("contact");
+    onHome();
     setTimeout(() => {
-      const el = document.getElementById("footer-contact");
+      const el = document.getElementById("contact-form-section") || document.getElementById("footer-contact");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };

@@ -5,6 +5,7 @@
 import React from "react";
 import { SERVICES } from "./services";
 import ServiceCard from "./components/ServiceCard";
+import ContactSection from "./components/ContactSection";
 import { useInView } from "./hooks/useInView";
 import { BRAND as CONFIG_BRAND } from "./config";
 import "./Home.css";
@@ -72,7 +73,7 @@ export default function Home({ onServiceSelect }) {
     : SERVICES.filter((s) => s.tag === activeCategory);
 
   const scrollToContact = () => {
-    const el = document.getElementById("footer-contact");
+    const el = document.getElementById("contact-form-section") || document.getElementById("footer-contact");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -245,6 +246,9 @@ export default function Home({ onServiceSelect }) {
           </ul>
         </div>
       </section>
+
+      {/* ── CONSULTATION & CONTACT FORM SECTION ── */}
+      <ContactSection />
     </div>
   );
 }
