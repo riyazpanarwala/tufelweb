@@ -135,7 +135,7 @@ export default function ContactSection() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "a2b0e77d-81db-4965-983a-4424ee385c7f",
+          access_key: CONTACT.web3formsKey,
           subject: `New Inquiry from ${cleanName} - Panarwala & Associates`,
           from_name: "Panarwala Website Inquiry",
           to_email: CONTACT.email,
@@ -170,11 +170,19 @@ export default function ContactSection() {
   };
 
   const triggerMailtoFallback = () => {
-    const subject = encodeURIComponent(`Consultation Inquiry - ${formData.service}`);
+    const cleanName = sanitizeString(formData.name);
+    const cleanPhone = sanitizeString(formData.phone);
+    const cleanEmail = sanitizeString(formData.email);
+    const cleanMessage = sanitizeString(formData.message);
+
+    const subject = encodeURIComponent(`Consultation Inquiry from ${cleanName} - Panarwala & Associates`);
     const body = encodeURIComponent(
-      `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService Requested: ${formData.service}\n\nMessage:\n${formData.message}`
+      `Full Name: ${cleanName}\nPhone Number: ${cleanPhone}\nEmail: ${cleanEmail}\nService Requested: ${formData.service}\n\nMessage:\n${cleanMessage}`
     );
-    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`;
+
+    // Direct Gmail Webmail composer in new tab
+    const gmailWebmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT.email}&su=${subject}&body=${body}`;
+    window.open(gmailWebmailUrl, "_blank");
     setStatus("success");
   };
 
