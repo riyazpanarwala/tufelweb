@@ -449,6 +449,44 @@
   margin: 0 auto;
 }
 
+/* Category Filter Tabs */
+.services-filter-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-tab {
+  font-family: var(--ff-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-body);
+  background: var(--white);
+  border: 1px solid rgba(229, 231, 235, 0.9);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(13, 37, 69, 0.03);
+}
+
+.filter-tab:hover {
+  color: var(--navy);
+  border-color: rgba(201, 168, 76, 0.4);
+  background: #FAFBFD;
+}
+
+.filter-tab.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+  box-shadow: 0 4px 14px rgba(13, 37, 69, 0.2);
+}
+
 /* Grid */
 .services-grid {
   display: grid;

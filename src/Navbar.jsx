@@ -10,15 +10,37 @@ import "./Navbar.css";
 export default function Navbar({ onHome, onServiceSelect }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+
+      // Section tracking
+      const servicesEl = document.getElementById("services-section");
+      const contactEl = document.getElementById("footer-contact");
+
+      if (contactEl && window.scrollY + window.innerHeight >= document.body.offsetHeight - 120) {
+        setActiveSection("contact");
+      } else if (servicesEl && window.scrollY >= servicesEl.offsetTop - 140) {
+        setActiveSection("services");
+      } else {
+        setActiveSection("home");
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleHomeClick = () => {
+    setActiveSection("home");
+    onHome();
+  };
+
   const scrollToServices = () => {
     setMenuOpen(false);
+    setActiveSection("services");
     onHome();
     setTimeout(() => {
       const el = document.getElementById("services-section");
@@ -28,6 +50,7 @@ export default function Navbar({ onHome, onServiceSelect }) {
 
   const scrollToContact = () => {
     setMenuOpen(false);
+    setActiveSection("contact");
     setTimeout(() => {
       const el = document.getElementById("footer-contact");
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -38,21 +61,35 @@ export default function Navbar({ onHome, onServiceSelect }) {
     <nav
       className={`navbar${scrolled ? " navbar--scrolled" : ""}`}
       aria-label="Main navigation"
-      style={{ position: "sticky" }}
     >
       <div className="navbar-container">
         {/* Logo */}
-        <Logo variant="dark" size="md" onClick={onHome} />
+        <Logo variant="dark" size="md" onClick={handleHomeClick} />
 
         {/* Desktop nav links */}
         <div className="nav-links" role="menubar">
-          <button type="button" className="nav-link-btn active" onClick={onHome} role="menuitem">
+          <button
+            type="button"
+            className={`nav-link-btn${activeSection === "home" ? " active" : ""}`}
+            onClick={handleHomeClick}
+            role="menuitem"
+          >
             Home
           </button>
-          <button type="button" className="nav-link-btn" onClick={scrollToServices} role="menuitem">
+          <button
+            type="button"
+            className={`nav-link-btn${activeSection === "services" ? " active" : ""}`}
+            onClick={scrollToServices}
+            role="menuitem"
+          >
             Services
           </button>
-          <button type="button" className="nav-link-btn" onClick={scrollToContact} role="menuitem">
+          <button
+            type="button"
+            className={`nav-link-btn${activeSection === "contact" ? " active" : ""}`}
+            onClick={scrollToContact}
+            role="menuitem"
+          >
             Contact Us
           </button>
         </div>
@@ -65,7 +102,7 @@ export default function Navbar({ onHome, onServiceSelect }) {
           aria-label="Get in touch with us"
         >
           Get In Touch
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12,5 19,12 12,19"/>
           </svg>
@@ -85,7 +122,7 @@ export default function Navbar({ onHome, onServiceSelect }) {
 
       {/* Mobile menu */}
       <div className={`nav-mobile-menu${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen}>
-        <button type="button" className="nav-mobile-link" onClick={() => { onHome(); setMenuOpen(false); }}>
+        <button type="button" className="nav-mobile-link" onClick={() => { handleHomeClick(); setMenuOpen(false); }}>
           Home
         </button>
         <button type="button" className="nav-mobile-link" onClick={scrollToServices}>

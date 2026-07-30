@@ -61,8 +61,15 @@ const PILLARS = [
   },
 ];
 
+const CATEGORIES = ["All", "Taxation", "Compliance", "Corporate", "Legal", "Advisory"];
+
 export default function Home({ onServiceSelect }) {
   const [heroRef, heroInView] = useInView(0.1);
+  const [activeCategory, setActiveCategory] = React.useState("All");
+
+  const filteredServices = activeCategory === "All"
+    ? SERVICES
+    : SERVICES.filter((s) => s.tag === activeCategory);
 
   const scrollToContact = () => {
     const el = document.getElementById("footer-contact");
@@ -209,8 +216,24 @@ export default function Home({ onServiceSelect }) {
             </p>
           </header>
 
+          {/* Category Filter Tabs */}
+          <div className="services-filter-tabs" role="tablist" aria-label="Filter services by category">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                className={`filter-tab${activeCategory === cat ? " active" : ""}`}
+                onClick={() => setActiveCategory(cat)}
+                role="tab"
+                aria-selected={activeCategory === cat}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           <ul className="services-grid">
-            {SERVICES.map((service, i) => (
+            {filteredServices.map((service, i) => (
               <li key={service.id}>
                 <ServiceCard
                   service={service}
