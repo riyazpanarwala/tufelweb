@@ -142,6 +142,13 @@ export default function Home({ onServiceSelect }) {
               width="1200"
               height="900"
             />
+            <div className="hero-trust-badge">
+              <div className="hero-trust-icon" aria-hidden="true">✓</div>
+              <div className="hero-trust-text">
+                <span className="trust-title">100% Compliant &amp; Trusted</span>
+                <span className="trust-subtitle">Tax, GST &amp; Accounting Advisory</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
