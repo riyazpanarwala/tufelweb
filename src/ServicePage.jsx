@@ -7,7 +7,7 @@
 import React, { useEffect } from "react";
 import { getServiceById } from "./services";
 import { useInView } from "./hooks/useInView";
-import { IconChevronRight } from "./Icons";
+import { IconChevronRight, ServiceIcon } from "./Icons";
 import "./ServicePage.css";
 
 /* ── List item with staggered entrance ── */
@@ -84,14 +84,7 @@ export default function ServicePage({ serviceId, onBack }) {
             className={`sp-hero__title-row${heroInView ? " is-visible" : ""}`}
           >
             <div className="sp-hero__icon-wrap">
-              <img
-                src={service.img}
-                alt={`${service.title} service icon`}
-                className="sp-hero__icon-img"
-                loading="lazy"
-                width={60}
-                height={60}
-              />
+              <ServiceIcon serviceId={service.id} size={48} color="var(--gold-bright)" />
             </div>
 
             <div>

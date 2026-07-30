@@ -4,6 +4,7 @@
 import React, { memo } from "react";
 import { useInView } from "../hooks/useInView";
 import { getServicePath } from "../services";
+import { ServiceIcon } from "../Icons";
 import "./ServiceCard.css";
 
 function ServiceCard({ service, index, onSelect }) {
@@ -48,14 +49,7 @@ function ServiceCard({ service, index, onSelect }) {
 
       {/* Icon Wrapper with Glass Halo */}
       <div className="service-card__icon-wrapper">
-        <img
-          src={service.img}
-          alt={`${service.title} service icon`}
-          className="service-card__icon-img"
-          loading="lazy"
-          width={52}
-          height={52}
-        />
+        <ServiceIcon serviceId={service.id} size={36} color="var(--navy)" />
       </div>
 
       {/* Body: Title & Short Description */}
