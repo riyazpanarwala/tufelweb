@@ -7,7 +7,7 @@ import Logo from "./components/Logo";
 import { IconMenu, IconClose } from "./Icons";
 import "./Navbar.css";
 
-export default function Navbar({ onHome, onServiceSelect }) {
+export default function Navbar({ onHome, onServicesOverview, onServiceSelect }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -38,14 +38,18 @@ export default function Navbar({ onHome, onServiceSelect }) {
     onHome();
   };
 
-  const scrollToServices = () => {
+  const handleServicesClick = () => {
     setMenuOpen(false);
     setActiveSection("services");
-    onHome();
-    setTimeout(() => {
-      const el = document.getElementById("services-section");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    if (onServicesOverview) {
+      onServicesOverview();
+    } else {
+      onHome();
+      setTimeout(() => {
+        const el = document.getElementById("services-section");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
   };
 
   const scrollToContact = () => {
@@ -80,7 +84,7 @@ export default function Navbar({ onHome, onServiceSelect }) {
           <button
             type="button"
             className={`nav-link-btn${activeSection === "services" ? " active" : ""}`}
-            onClick={scrollToServices}
+            onClick={handleServicesClick}
             role="menuitem"
           >
             Services
@@ -126,7 +130,7 @@ export default function Navbar({ onHome, onServiceSelect }) {
         <button type="button" className="nav-mobile-link" onClick={() => { handleHomeClick(); setMenuOpen(false); }}>
           Home
         </button>
-        <button type="button" className="nav-mobile-link" onClick={scrollToServices}>
+        <button type="button" className="nav-mobile-link" onClick={handleServicesClick}>
           Services
         </button>
         <button type="button" className="nav-mobile-link" onClick={scrollToContact}>
