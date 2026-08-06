@@ -226,6 +226,57 @@ for (const service of SERVICES) {
   );
 }
 
+// Generate static pre-rendered HTML for /services overview page
+const servicesOverviewDir = path.join(distDir, "services");
+await mkdir(servicesOverviewDir, { recursive: true });
+await writeFile(
+  path.join(servicesOverviewDir, "index.html"),
+  buildPage({
+    title: "Our Services | Panarwala & Associates — Tax, GST & Accounting Ahmedabad",
+    description:
+      "Explore the full service portfolio of Panarwala & Associates: Bookkeeping, GST compliance, Income Tax Returns, ROC filing, Agreement drafting, and Business consulting in Ahmedabad.",
+    canonical: `${SITE_URL}/services`,
+    type: "website",
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        localBusinessSchema(),
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+          ],
+        },
+      ],
+    },
+    content: `
+      <main class="seo-prerender" id="main-content">
+        <nav aria-label="Breadcrumb"><a href="/">Home</a> / <span>Services</span></nav>
+        <header>
+          <p>Our Service Portfolio</p>
+          <h1>Comprehensive Tax, Financial &amp; Legal Solutions in Ahmedabad</h1>
+          <p>Explore our specialized practice areas: Bookkeeping, GST compliance, Income Tax Returns, ROC filings, and Legal agreement drafting.</p>
+        </header>
+        <section aria-labelledby="all-services-heading">
+          <h2 id="all-services-heading">All Services</h2>
+          <ul class="seo-prerender__services">
+            ${SERVICES.map(
+              (service) => `
+              <li>
+                <a href="${getServicePath(service)}">
+                  <strong>${escapeHtml(service.title)}</strong><br />
+                  ${escapeHtml(service.desc)}
+                </a>
+              </li>`,
+            ).join("")}
+          </ul>
+        </section>
+      </main>`,
+  }),
+  "utf8",
+);
+
 const lastModified = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Kolkata",
   year: "numeric",
@@ -234,6 +285,7 @@ const lastModified = new Intl.DateTimeFormat("en-CA", {
 }).format(new Date());
 const sitemapEntries = [
   { url: `${SITE_URL}/`, priority: "1.0", changefreq: "weekly" },
+  { url: `${SITE_URL}/services`, priority: "0.9", changefreq: "weekly" },
   ...SERVICES.map((service) => ({
     url: `${SITE_URL}${getServicePath(service)}`,
     priority: "0.8",
@@ -247,4 +299,4 @@ ${sitemapEntries.map((e) => `  <url>\n    <loc>${e.url}</loc>\n    <lastmod>${la
 `;
 await writeFile(path.join(distDir, "sitemap.xml"), sitemap, "utf8");
 
-console.log(`Generated SEO HTML for ${SERVICES.length + 1} routes.`);
+console.log(`Generated SEO HTML for ${SERVICES.length + 2} routes.`);

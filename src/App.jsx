@@ -14,10 +14,19 @@ import { SEO, SITE_URL } from "./config";
 import "./global.css";
 
 const ServicePage = lazy(() => import("./ServicePage"));
+const ServicesOverviewPage = lazy(() => import("./ServicesOverviewPage"));
 
-function getServiceFromLocation() {
-  const match = window.location.pathname.match(/^\/services\/([^/]+)\/?$/);
-  return match ? getServiceBySlug(match[1]) : null;
+function getRouteFromLocation() {
+  const path = window.location.pathname.replace(/\/$/, "");
+  if (path === "/services") {
+    return "overview";
+  }
+  const match = path.match(/^\/services\/([^/]+)$/);
+  if (match) {
+    const service = getServiceBySlug(match[1]);
+    if (service) return service.id;
+  }
+  return "home";
 }
 
 function setMetaContent(selector, content) {
@@ -25,28 +34,32 @@ function setMetaContent(selector, content) {
 }
 
 function App() {
-  const [activeServiceId, setActiveServiceId] = useState(
-    () => getServiceFromLocation()?.id ?? null,
-  );
+  const [activeView, setActiveView] = useState(() => getRouteFromLocation());
 
   const handleServiceSelect = useCallback((id) => {
     const service = getServiceById(id);
     if (!service) return;
 
     window.history.pushState({}, "", getServicePath(service));
-    setActiveServiceId(service.id);
+    setActiveView(service.id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const handleServicesOverview = useCallback(() => {
+    window.history.pushState({}, "", "/services");
+    setActiveView("overview");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const handleHome = useCallback(() => {
     window.history.pushState({}, "", "/");
-    setActiveServiceId(null);
+    setActiveView("home");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   useEffect(() => {
     const handlePopState = () => {
-      setActiveServiceId(getServiceFromLocation()?.id ?? null);
+      setActiveView(getRouteFromLocation());
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -54,14 +67,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const service = getServiceById(activeServiceId);
-    const title = service
-      ? service.seoTitle
-      : SEO.title;
-    const description = service
-      ? `${service.desc} Professional support from Panarwala & Associates in Ahmedabad.`
-      : SEO.description;
-    const canonical = `${SITE_URL}${service ? getServicePath(service) : "/"}`;
+    let title = SEO.title;
+    let description = SEO.description;
+    let canonical = `${SITE_URL}/`;
+
+    if (activeView === "overview") {
+      title = "Our Services | Panarwala & Associates — Tax, GST & Accounting Ahmedabad";
+      description =
+        "Explore the full service portfolio of Panarwala & Associates: Bookkeeping, GST compliance, Income Tax Returns, ROC filing, Agreement drafting, and Business consulting in Ahmedabad.";
+      canonical = `${SITE_URL}/services`;
+    } else if (typeof activeView === "number") {
+      const service = getServiceById(activeView);
+      if (service) {
+        title = service.seoTitle;
+        description = `${service.desc} Professional support from Panarwala & Associates in Ahmedabad.`;
+        canonical = `${SITE_URL}${getServicePath(service)}`;
+      }
+    }
+
     const ogImage = `${SITE_URL}${SEO.ogImage}`;
 
     document.title = title;
@@ -75,7 +98,7 @@ function App() {
     setMetaContent('meta[name="twitter:title"]', title);
     setMetaContent('meta[name="twitter:description"]', description);
     setMetaContent('meta[name="twitter:image"]', ogImage);
-  }, [activeServiceId]);
+  }, [activeView]);
 
   return (
     <div className="app-container">
@@ -83,17 +106,37 @@ function App() {
         Skip to main content
       </a>
 
-      <Navbar onHome={handleHome} onServiceSelect={handleServiceSelect} />
+      <Navbar
+        onHome={handleHome}
+        onServicesOverview={handleServicesOverview}
+        onServiceSelect={handleServiceSelect}
+      />
 
       <main id="main-content" className="main-content">
-        {activeServiceId === null ? (
+        {activeView === "home" && (
           <div className="page-transition" key="home">
             <Home onServiceSelect={handleServiceSelect} />
           </div>
-        ) : (
+        )}
+
+        {activeView === "overview" && (
           <Suspense fallback={<LoadingSpinner />}>
-            <div className="page-transition" key={`service-${activeServiceId}`}>
-              <ServicePage serviceId={activeServiceId} onBack={handleHome} />
+            <div className="page-transition" key="services-overview">
+              <ServicesOverviewPage
+                onHome={handleHome}
+                onServiceSelect={handleServiceSelect}
+              />
+            </div>
+          </Suspense>
+        )}
+
+        {typeof activeView === "number" && (
+          <Suspense fallback={<LoadingSpinner />}>
+            <div className="page-transition" key={`service-${activeView}`}>
+              <ServicePage
+                serviceId={activeView}
+                onBack={handleServicesOverview}
+              />
             </div>
           </Suspense>
         )}
@@ -107,3 +150,4 @@ function App() {
 }
 
 export default App;
+
